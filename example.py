@@ -16,6 +16,9 @@ rc.project_open(project)
 res = rc.project_current()
 print(res)
 
+#res = rc.Compute_Complete()
+#print('ComputeComplete', res)
+
 # %% Geometry (Geometry Class)
 
 geo = rc.geometry()
@@ -80,3 +83,10 @@ print('NodeCType', res)
 #
 #res = rc.geometry_get_reaches(1)
 #print(res)
+
+# %% Get (Controller Class)
+res = rc.GetRASVersion()
+print('GetRASVersion', res)
+
+res = rc.HECRASVersion()
+print('HECRASVersion', res)

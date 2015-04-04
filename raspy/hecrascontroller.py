@@ -15,43 +15,199 @@ class HECRASController(object):
         self._rc = win32com.client.Dispatch("RAS41.HECRASController")
         self._geometry = HECRASGeometry()
 
-    def compute_complete(self):
-        """Returns a true value once computations have completed"""
-        rc = self._rc
-        rc.Compute_Complete()
+#    def Compute_Complete(self):
+#        """
+#        Returns a true value once computations have completed
+#
+#        Notes
+#        -----
+#        Can be called during computations if Blocking Mode in
+#        Compute_CurrentPlan is ser to False.
+#        """
+#        rc = self._rc
+#        res = rc.Compute_Complete()
+#        print(res)
 
-    def compute_current_plan(self):
-        """Returns a true value once computations have completed"""
+    # %% Compute
+    def Compute_Cancel(self):
+        """
+        """
+        rc = self._rc
+        rc.Compute_Cancel()
+
+    def Compute_CurrentPlan(self, nmsg, msg, BlockingModel=True):
+        """
+        Computes the current plan.
+
+        Parameters
+        ----------
+        nmsg : int
+            The number of returned messages.
+        msg : str
+            Messages returned from HECRASController during computations
+        BlockingMode: bool, optional
+            If BlockingMode is set to False, the code will continue to be read
+            while HEC-RAS is computing. Otherwise, run-time will be paused. By
+            default, the HECRASController sets blocking mode to True.
+        """
         rc = self._rc
         rc.Compute_CurrentPlan()
 
+    def Compute_HideComputationWindow(self):
+        """
+        """
+
+    def Compute_IsStillComputing(self):
+        """
+        """
+
+    def Compute_ShowComputationWindow(self):
+        """
+        """
+
+    def Compute_WATPlan(self):
+        """
+        """
+
+    # %% Current
+    def CurrentGeomFile(self):
+        """
+        """
+
+    def CurrentPlanFile(self):
+        """
+        """
+
+    def CurrentProjectFile(self):
+        """
+        """
+
+    def CurrentProjectTitle(self):
+        """
+        """
+
+    def CurrentSteadyFile(self):
+        """
+        """
+
+    def CurrentUnSteadyFile(self):
+        """
+        """
+
+    # %% Edit
+    def Edit_AddBC(self):
+        """
+        """
+
+    def Edit_AddIW(self):
+        """
+        """
+
+    def Edit_AddLW(self):
+        """
+        """
+
+    def Edit_AddXS(self):
+        """
+        """
+
+    def Edit_BC(self):
+        """
+        """
+
+    def Edit_GeometricData(self):
+        """
+        """
+
+    def Edit_IW(self):
+        """
+        """
+
+    def Edit_LW(self):
+        """
+        """
+
+    def Edit_MultipleRun(self):
+        """
+        """
+
+    def Edit_PlanData(self):
+        """
+        """
+
+    def Edit_QuasiUnsteadyFlowData(self):
+        """
+        """
+
+    def Edit_SedimentData(self):
+        """
+        """
+
+    def Edit_SteadyFlowData(self):
+        """
+        """
+
+    def Edit_UnsteadyFlowData(self):
+        """
+        """
+
+    def Edit_WaterQualityData(self):
+        """
+        """
+
+    def Edit_XS(self):
+        """
+        """
+
+    # %% Export
+    def ExportGIS(self):
+        """
+        Imports geometry data from an *.sdf import file.
+
+        Parameters
+        ----------
+        title : str
+            The title of the new geometry file to import.
+
+        Returns
+        -------
+        str
+            TODO:
+        """
+        rc = self._rc
+        #title, filename = rc.geometery_gis_import(title)
+
     # %% Geometry
-    def geometry(self):
+    def Geometery_GISImport(self):
+        """
+        """
+
+    def Geometry(self):
         """
         """
         return self._geometry
 
-    def geometry_breach_param_get_xml(self):
-        """
-        Returns a string listing out the dam breach parameters of current plan
-        in xml format.
-        """
-        rc = self._rc
-        #rc.Geometry_BreachParamGetXML()
+#    def geometry_breach_param_get_xml(self):
+#        """
+#        Returns a string listing out the dam breach parameters of current plan
+#        in xml format.
+#        """
+#        rc = self._rc
+#        #rc.Geometry_BreachParamGetXML()
+#
+#    def geometry_breach_param_set_xml(self, xml_text):
+#        """
+#        Set the dam breach parameters of current plan in xml format.
+#
+#        Parameters
+#        ----------
+#        xml_test : str
+#            TODO:.
+#        """
+#        rc = self._rc
+#        #rc.Geometry_BreachParamSetXML()
 
-    def geometry_breach_param_set_xml(self, xml_text):
-        """
-        Set the dam breach parameters of current plan in xml format.
-
-        Parameters
-        ----------
-        xml_test : str
-            TODO:.
-        """
-        rc = self._rc
-        #rc.Geometry_BreachParamSetXML()
-
-    def geometry_get_gate_names(self, river, reach, station):
+    def Geometry_GetGateNames(self, river, reach, station):
         """Returns a list of gates names.
 
         Parameters
@@ -69,7 +225,7 @@ class HECRASController(object):
 
         return list(gate_names)
 
-    def geometry_get_gml(self, geomfilename):
+    def Geometry_GetGML(self, geomfilename):
         """Returns the GML file txt for the current geometry file.
 
         Parameters
@@ -81,7 +237,7 @@ class HECRASController(object):
 
         return rc.Geometry_GetGML()
 
-    def geometry_get_node(self, river_id, reach_id, station):
+    def Geometry_GetNode(self, river_id, reach_id, station):
         """Returns the node ID of a selected node.
 
         Parameters
@@ -92,7 +248,7 @@ class HECRASController(object):
             TODO:
         station : str
             TODO:
-        
+
         Notes
         -----
         """
@@ -105,7 +261,7 @@ class HECRASController(object):
 
         return node_id
 
-    def geometry_get_nodes(self, river_id, reach_id):
+    def Geometry_GetNodes(self, river_id, reach_id):
         """
         Returns a dictionary of nodes and node types in a specified river id
         reach id.
@@ -132,7 +288,7 @@ class HECRASController(object):
             result = None
         return result
 
-    def geometry_get_reaches(self, river_id):
+    def Geometry_GetReaches(self, river_id):
         """
         Returns a list of the reach names in a given river id.
 
@@ -156,7 +312,7 @@ class HECRASController(object):
             result = None
         return result
 
-    def geometry_get_rivers(self):
+    def Geometry_GetRivers(self):
         """Returns a list of rivers names."""
         rc = self._rc
         res = rc.Geometry_GetRivers()
@@ -169,61 +325,230 @@ class HECRASController(object):
 
         return result
 
-    def geometry_gis_import(self, title):
+    def Geometry_SetMann(self):
         """
-        Imports geometry data from an *.sdf import file.
+        """
 
-        Parameters
-        ----------
-        title : str
-            The title of the new geometry file to import.
+    def Geometry_SetMann_LChR(self):
+        """
+        """
 
-        Returns
-        -------
-        str
-            TODO:
+    def Geometry_SetSAArea(self):
+        """
+        """
+
+#    def Geometry_ratio_manning(self, river_id, reach_up_id, node_upstream,
+#                               reach_down_id, node_down, ratio):
+#        """
+#        Changes Manning's n values over a specified range of cross sections by
+#        the input ratio.
+#
+#        Parameters
+#        ----------
+#        river_id : int
+#            The river id
+#        reach_down_id : int
+#            The upstream reach id in the range.
+#        node_down : int
+#            The upstream node id in the range.
+#        reach_down_id : int
+#            The upstream reach id in the range.
+#        node_down : int
+#            The upstream node id in the range.
+#        ratio : float
+#            The ratio to apply to the Manning's n values in the range of cross
+#            sections.
+#
+#        Returns
+#        -------
+#        str
+#            TODO:
+#        """
+#        rc = self._rc
+
+    # %% Get
+
+    def GetDataLocations_Input(self):
+        """
+        """
+
+    def GetDataLocations_Input_count(self):
+        """
+        """
+
+    def GetDataLocations_Output(self):
+        """
+        """
+
+    def GetDataLocations_Output_count(self):
+        """
+        """
+
+    def GetRASVersion(self):
+        """
+        Returns the version number and date of HEC-RAS.
+
+        Notes
+        -----
+        Works the same as HECRASVersion.
         """
         rc = self._rc
-        #title, filename = rc.geometery_gis_import(title)
+        version = rc.GetRASVersion()
+        return version
 
-    def geometry_ratio_manning(self, river_id, reach_up_id, node_upstream,
-                               reach_down_id, node_down, ratio):
+    def HECRASVersion(self):
         """
-        Changes Manning's n values over a specified range of cross sections by
-        the input ratio.
-
-        Parameters
-        ----------
-        river_id : int
-            The river id
-        reach_down_id : int
-            The upstream reach id in the range.
-        node_down : int
-            The upstream node id in the range.
-        reach_down_id : int
-            The upstream reach id in the range.
-        node_down : int
-            The upstream node id in the range.
-        ratio : float
-            The ratio to apply to the Manning's n values in the range of cross
-            sections.
-
-        Returns
-        -------
-        str
-            TODO:
+        Returns the version number and date of HEC-RAS.
+        
+        Notes
+        -----
+        Works the same as GetRASVersion.
         """
         rc = self._rc
+        version = rc.HECRASVersion()
+        return version
+
+    # %% Map
+    def Map_Add(self):
+        """
+        """
+
+    def mGeometry(self):
+        """
+        """
+
+    # %% Output
+    def Output_ComputationLevel_Export(self):
+        """
+        """
+
+    def Output_GetNode(self):
+        """
+        """
+
+    def Output_GetNodes(self):
+        """
+        """
+
+    def Output_GetProfiles(self):
+        """
+        """
+
+    def Output_GetReach(self):
+        """
+        """
+
+    def Output_GetReaches(self):
+        """
+        """
+
+    def Output_GetRiver(self):
+        """
+        """
+
+    def Output_GetRivers(self):
+        """
+        """
+
+    def Output_Initialize(self):
+        """
+        """
+
+    def Output_NodeOutput(self):
+        """
+        """
+
+    def Output_ReachOutput(self):
+        """
+        """
+
+    def Output_Variables(self):
+        """
+        """
+
+    def Output_VelDist(self):
+        """
+        """
+
+    def OutputDSS_GetStageFlow(self):
+        """
+        """
+
+    def OutputDSS_GetStageFlowSA(self):
+        """
+        """
+
+    # %% Plan
+    def Plan_GetFilename(self):
+        """
+        """
+
+    def Plan_Names(self):
+        """
+        """
+
+    def Plan_Reports(self):
+        """
+        """
+
+    def Plan_SetCurrent(self):
+        """
+        """
+
+    def PlanOutput_IsCurrent(self):
+        """
+        """
+
+    def PlanOutput_SetCurrent(self):
+        """
+        """
+
+    def PlanOutput_SetMultiple(self):
+        """
+        """
+
+    # %% Plot
+    def PlotHydraulicTables(self):
+        """
+        """
+
+    def PlotPF(self):
+        """
+        """
+
+    def PlotPFGeneral(self):
+        """
+        """
+
+    def PlotRatingCurve(self):
+        """
+        """
+
+    def PlotStageFlow(self):
+        """
+        """
+
+    def PlotStageFlow_SA(self):
+        """
+        """
+
+    def PlotXS(self):
+        """
+        """
+
+    def PlotXYZ(self):
+        """
+        """
 
     # %% Project
-    def project_current(self):
+    def Project_Current(self):
         """Returns the file name and path of the current HEC-RAS project."""
         rc = self._rc
         res = rc.Project_Current()
         
         return res
 
-    def project_new(self, title, filename):
+    def Project_New(self, title, filename):
         """Starts a new HEC-RAS project with a given project fullpath and sets
         the title.
 
@@ -246,7 +571,7 @@ class HECRASController(object):
 
         rc.Project_Open(title, fullpath)
 
-    def project_open(self, project_filename):
+    def Project_Open(self, project_filename):
         """
         Open a HEC-RAS project with a given project path.
 
@@ -266,14 +591,14 @@ class HECRASController(object):
 
         rc.Project_Open(fullpath)
 
-    def project_save(self):
+    def Project_Save(self):
         """
         Save the current HEC-RAS project.
         """
         rc = self._rc
         rc.Project_Save()
 
-    def project_save_as(self, new_project_name):
+    def Project_SaveAs(self, new_project_name):
         """
         Saves as a new project with a given project file name and path.
 
@@ -286,21 +611,97 @@ class HECRASController(object):
         fullpath = osp.abspath(new_project_name)
         rc.Project_SaveAs(fullpath)
 
-    def quit_ras(self):
+#    def quit_ras(self):
+#        """
+#        Closes HEC-RAS.
+#
+#        Notes
+#        -----
+#        quit_ras should be called at the end of each session that open a
+#        HEC-RAS project. Qithout quit_ras, RAS will remain open as a process
+#        after a script is completed.
+#        """
+#        rc = self._rc
+#        rc.QuitRAS()
+
+    # %% Schematic
+    def Schematic_ReachCount(self):
         """
-        Closes HEC-RAS.
+        """
+
+    def Schematic_ReachPointCount(self):
+        """
+        """
+
+    def Schematic_ReachPoints(self):
+        """
+        """
+
+    def Schematic_XSCount(self):
+        """
+        """
+
+    def Schematic_XSPointCount(self):
+        """
+        """
+
+    def Schematic_XSPoints(self):
+        """
+        """
+
+    # %% Set
+
+    def SetDataLocations(self):
+        """
+        """
+
+    # %% Show
+    def ShowRas(self):
+        """
+        Displays the main HEC-RAS window
 
         Notes
         -----
-        quit_ras should be called at the end of each session that open a
-        HEC-RAS project. Qithout quit_ras, RAS will remain open as a process
-        after a script is completed.
+        Once a RAS project has been open, ShowRAS will display it. Just opening
+        a RAS project, only opens it as a process running in the background.
+        You have to ShowRAS to see it on your monitor. Run-time must be paused
+        in some way to be able to see HEC-RAS though. If the RAS Controller is
+        called within a function, as soon as that function has been executed
+        and completed, the instance of HECRASController will close (thus
+        closing the HEC-RAS application). To keep HEC-RASS open throw out a
+        message box that requires user interaction to close, which effectively
+        pauses the run-time.
         """
         rc = self._rc
-#        rc.QuitRAS()
-
-    def show_ras(self):
-        """ """
-        rc = self._rc
-        self._show = True
         rc.ShowRas()
+
+    # %% Steady
+    def SteadyFlow_ClearFlowData(self):
+        """
+        """
+
+    def SteadyFlow_FixedWSBoundary(self):
+        """
+        """
+
+    def SteadyFlow_nProfile(self):
+        """
+        """
+
+    def SteadyFlow_SetFlow(self):
+        """
+        """
+
+    # %% Table
+    def TablePF(self):
+        """
+        """
+
+    def TableXS(self):
+        """
+        """
+
+    # %% Unsteady
+    def UnsteadyFlow_SetGateOpening_Constant(self):
+        """
+        """
