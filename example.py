@@ -16,6 +16,9 @@ rc.Project_Open(project)
 res = rc.Project_Current()
 print('Project_Current', res)
 
+#res = rc.Compute_Cancel()
+#print('Compute_Cancel', res)
+
 #res = rc.Compute_Complete()
 #print('ComputeComplete', res)
 
@@ -110,4 +113,4 @@ print('GetRASVersion', res)
 res = rc.HECRASVersion()
 print('HECRASVersion', res)
 
-rc.QuitRas()
+#rc.QuitRas()

@@ -8,7 +8,8 @@ from .pyras import __version__
 def readme():
     return str(open('README.rst').read())
 
-install_requires = ['pywin32']
+# Check that pywin32 is installed otherwise raise error.
+install_requires = []
 
 setup(
     name='pyras',
@@ -21,7 +22,7 @@ setup(
     author_email='goanpeca@gmail.com',
     maintainer='Gonzalo Peña-Castellanos',
     maintainer_email='goanpeca@gmail.com',
-    description='A pythonic interface to the HECRASController using pywin32',
+    description='Python Wrapper of HEC RAS COM interface',
     long_description=readme(),
     install_requires=install_requires,
     classifiers=[

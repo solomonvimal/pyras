@@ -14,7 +14,7 @@ class Controller(object):
         rc = self._rc
         rc.Compute_Cancel()
 
-    def Compute_CurrentPlan(self, nmsg, msg, BlockingModel=True):
+    def Compute_CurrentPlan(self, nmsg, msg):
         """
         Computes the current plan.
 
@@ -24,29 +24,127 @@ class Controller(object):
             The number of returned messages.
         msg : str
             Messages returned from HECRASController during computations
-        BlockingMode: bool, optional
-            If BlockingMode is set to False, the code will continue to be read
-            while HEC-RAS is computing. Otherwise, run-time will be paused. By
-            default, the HECRASController sets blocking mode to True.
         """
         rc = self._rc
-        rc.Compute_CurrentPlan()
+        rc.Compute_CurrentPlan(nmsg)
 
     def Compute_HideComputationWindow(self):
         """
+        Set the computation window to be hidden during computations.
+
+        Notes
+        -----
+        This should be called before Compute_CurrentPlan.
         """
+        rc = self._rc
+        rc.Compute_HideComputationWindow()
 
     def Compute_IsStillComputing(self):
         """
+        Returns True if a computation is still in execution.
+
+        Returns
+        -------
+        bool
         """
+        rc = self._rc
+        res = rc.Compute_IsStillComputing()
+        return res
 
     def Compute_ShowComputationWindow(self):
         """
+        Sets the computation window to be visible during computations.
+
+        Notes
+        -----
+        This hould be called before Compute_CurrentPlan. Because by default the
+        RAS Controller shows the Computation Window, this is not necessary
+        unless the Computation Window was already hidden in a previous line of
+        code.
         """
+        rc = self._rc
+        rc.Compute_ShowComputationWindow()
 
     def Compute_WATPlan(self):
         """
+        Computes a WAT plan.
+
+        Returns
+        -------
+        bool
+
+        Notes
+        -----
+        For WAT only.
         """
+        rc = self._rc
+        res = rc.Compute_WATPlan()
+        return res
+
+    def ComputeProgressBar(self):
+        """
+        Repeatedly returns a single value between 0 and 1, indicating the
+        progress of the computations.
+
+        Parameters
+        ----------
+        Progress : float
+            Progress of computations [0, 1]
+
+        Notes
+        -----
+        Must instantiate the HECRASController "With Events". Then the event
+        rc.ComputeProgressBar becomes available for code. rc being the variable
+        name for the instanciated HECRASController. rc_ComputeProgressBar is
+        called repeatedly once Compute_CurrentPlan is called and thorugh the
+        duration of the HEC-RAS Computations.
+        """
+        Progress = 0.0
+        rc = self._rc
+        res = rc.ComputeProgressBar(Progress)
+        return res
+
+    def ComputeProgressMessage(self):
+        """
+        Repeatedly returns computations messages during computations.
+
+        Parameters
+        ----------
+        Msg : str
+            Computation message.
+
+        Notes
+        -----
+        Must instantiate the HECRASController "With Events". Then the method
+        rc_ComputeProgressBar becomes available for code. rc being the variable
+        name for the instanciated HECRASController. rc_ComputeProgressMessage
+        is called repeatedly once Compute_CurrentPlan is called and thorugh the
+        duration of the HEC-RAS Computations.
+        """
+        Msg = ""
+        rc = self._rc
+        res = rc.ComputeProgressBar(Msg)
+        return res
+
+    # %% Create
+    def Create_WATPlanName(self, HECRASBasePlanName, SimulationName):
+        """
+        Returns a WAT Plan Name, based i the RAS base plan name and the
+        simulation.
+
+        Parameters
+        ----------
+        HECRASBasePlanName : str
+
+        SimulationName : str
+
+        Notes
+        -----
+        For WT only.
+        """
+        rc = self._rc
+        res = rc.Create_WATPlanName(HECRASBasePlanName, SimulationName)
+        return res
 
     # %% Current
     def CurrentGeomFile(self):
@@ -122,122 +220,364 @@ class Controller(object):
         return res
 
     # %% Edit
-    def Edit_AddBC(self):
+    def Edit_AddBC(self, river, reach, rs):
         """
-        """
+        Add a bridge/culvert.
 
-    def Edit_AddIW(self):
-        """
-        """
+        Parameters
+        ----------
+        river : str
+            The river name to add the bridge/culvert section to.
+        reach : str
+            The reach name  to add the bridge/culvert to.
+        rs : str
+            The river station of the new bridge/culvert .
 
-    def Edit_AddLW(self):
+        Notes
+        -----
+        The Edit_BC method must be included in the code after Edit_AddBC, and
+        must cal the newly bridge/culvertin order for it to be saved to the
+        geometry file. Edit_BC brings up the Bridge/Culvert editor. No edits
+        are necessary to save the new bridge/culvert, the editor has to just
+        open and close. Without Edit_BC, once the code has been completed and
+        the HECRASController closes, HEC-RAS will close and the newly added
+        cross section will be lost.
         """
-        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Edit_AddBC(river, reach, rs, errmsg)
+        river, reach, rs, errmsg = res
 
-    def Edit_AddXS(self):
+    def Edit_AddIW(self, river, reach, rs):
         """
-        """
+        Add a inline structure section.
 
-    def Edit_BC(self):
+        Parameters
+        ----------
+        river : str
+            The river name to add the inline structure to.
+        reach : str
+            The reach name  to add the inline structure to.
+        rs : str
+            The river station of the new inline structure.
+
+        Notes
+        -----
+        The Edit_IW method must be included in the code after Edit_AddIW, and
+        must cal the newly added inline structure in order for it to be saved
+        to the geometry file. Edit_IW brings up the Inline Structure Editor.
+        No edits are necessary to save the new inline structure, the editor
+        has to just open and close. Without Edit_IW, once the code has been
+        completed and the HECRASController closes, HEC-RAS will close and the
+        newly added cross section will be lost.
         """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Edit_AddIW(river, reach, rs, errmsg)
+        river, reach, rs, errmsg = res
+
+    def Edit_AddLW(self, river, reach, rs):
         """
+        Add a lateral structure.
+
+        Parameters
+        ----------
+        river : str
+            The river name to add the lateral structure to.
+        reach : str
+            The reach name  to add the lateral structure to.
+        rs : str
+            The river station of the new lateral structure.
+
+        Notes
+        -----
+        The Edit_LW method must be included in the code after Edit_AddLW, and
+        must cal the newly added lateral structure in order for it to be saved
+        to the geometry file. Edit_LW brings up the Lateral Structure Editor.
+        No edits are necessary to save the new lateral structure, the editor
+        has to just open and close. Without Edit_LW, once the code has been
+        completed and the HECRASController closes, HEC-RAS will close and the
+        newly added cross section will be lost.
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Edit_AddLW(river, reach, rs, errmsg)
+        river, reach, rs, errmsg = res
+
+    def Edit_AddXS(self, river, reach, rs):
+        """
+        Add a cross section.
+
+        Parameters
+        ----------
+        river : str
+            The river name to add the cross section to.
+        reach : str
+            The reach name  to add the cross section to.
+        rs : str
+            The river station of the new cross setion.
+
+        Notes
+        -----
+        The Edit_XS method must be included in the code after Edit_AddXS, and
+        must cal the newly added cross section in order for it to be saved to
+        the geometry file. Edit_XS brings up the cross section editor. No edits
+        are necessary to save the new cross section, the editor has to just
+        open and close. Without Edit_XS, once the code has been completed and
+        the HECRASController closes, HEC-RAS will close and the newly added
+        cross section will be lost.
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Edit_AddXS(river, reach, rs, errmsg)
+        river, reach, rs, errmsg = res
+
+    def Edit_BC(self, river, reach, rs):
+        """
+        Opens the Bridge/Culvert Editor and displays the selected river
+        station.
+
+        Parameters
+        ----------
+        river : str
+            The river name of the bridge/culvert structure to edit.
+        reach : str
+            The reach name of the bridge/culvert to edit.
+        rs : str
+            The river station of the bridge/culvert to edit.
+
+        Notes
+        -----
+        Run-time is paused while edits are made in the Bridge/Culvert Editor.
+        editor. Once the Bridge/Culvert Editor is closed, run-time resumes.
+        """
+        rc = self._rc
+        rc.Edit_BC(river, reach, rs)
 
     def Edit_GeometricData(self):
         """
-        """
+        Opens the Geometry Data window.
 
-    def Edit_IW(self):
+        Notes
+        -----
+        Run-time is paused while edits are made in the Geometry Data Window.
+        Once the Geometry Data Window is closed, run-time resumes.
         """
-        """
+        rc = self._rc
+        rc.Edit_GeometricData()
 
-    def Edit_LW(self):
+    def Edit_IW(self, river, reach, rs):
         """
+        Opens the Inline Structure Editor and displays the selected river
+        station.
+
+        Parameters
+        ----------
+        river : str
+            The river name of the inline structure to edit.
+        reach : str
+            The reach name of the inline structure to edit.
+        rs : str
+            The river station of the inline structure to edit.
+
+        Notes
+        -----
+        Run-time is paused while edits are made in the inline structure
+        editor. Once the Lateral Structure Editor is closed, run-time resumes.
         """
+        rc = self._rc
+        rc.Edit_LW(river, reach, rs)
+
+    def Edit_LW(self, river, reach, rs):
+        """
+        Opens the Lateral Structure Editor and displays the selected river
+        station.
+
+        Parameters
+        ----------
+        river : str
+            The river name of the lateral structure to edit.
+        reach : str
+            The reach name of the lateral structure to edit.
+        rs : str
+            The river station of the lateral structure to edit.
+
+        Notes
+        -----
+        Run-time is paused while edits are made in the lateral structure
+        editor. Once the Lateral Structure Editor is closed, run-time resumes.
+        """
+        rc = self._rc
+        rc.Edit_LW(river, reach, rs)
 
     def Edit_MultipleRun(self):
         """
+        Opens the Run Multiple Plans Dialog.
+
+        Notes
+        -----
+        Run-time does not pause while the Run Multiple Plans Dialog is open, so
+        it is suggested that a message box be added after Edit_MultipleRun,
+        so that the method does not end and close the window before the user
+        can check plans.
         """
+        rc = self._rc
+        rc.Edit_MultipleRun()
 
     def Edit_PlanData(self):
         """
+        Opens the Steady or Unsteady Flow Analysis windows for edits (whichever
+        is current).
+
+        Notes
+        -----
+        Run-time does not pause while the Unsteady Flow Editor is open, so it
+        is suggested that a message box be added after Edit_UnsteadyFlowData,
+        so that the method does not end and close the window before the user
+        can make edits.
         """
+        rc = self._rc
+        rc.Edit_PlanData()
 
     def Edit_QuasiUnsteadyFlowData(self):
         """
+        Opens the Unsteady Flow Editor
+
+        Notes
+        -----
+        Run-time does not pause while the Quasi-Unsteady Flow Editor is open,
+        so it is suggested that a message box be added after
+        Edit_QuasiUnsteadyFlowData, so that the method does not end and close
+        the window before the user can make edits.
         """
+        rc = self._rc
+        rc.Edit_QuasiUnsteadyFlowData()
 
     def Edit_SedimentData(self):
         """
+        Opens the Sediment Data Editor.
+
+        Notes
+        -----
+        Run-time does not pause while the Sediment Data Editor is open, so it
+        is suggested that a message box be added after Edit_SedimentData, so
+        that the method does not end and close the window before the user can
+        make edits.
         """
         rc = self._rc
+        rc.Edit_SedimentData()
 
     def Edit_SteadyFlowData(self):
         """
+        Opens the Steady Flow Editor.
+
+        Notes
+        -----
+        Run-time does not pause while the Steady Flow Editor is open, so it
+        is suggested that a message box be added after Edit_SteadyFlowData,
+        so that the method does not end and close the window before the user
+        can make edits.
         """
         rc = self._rc
+        rc.Edit_SteadyFlowData()
 
     def Edit_UnsteadyFlowData(self):
         """
+        Opens the Unsteady Flow Editor.
+
+        Notes
+        -----
+        Run-time does not pause while the Unsteady Flow Editor is open, so it
+        is suggested that a message box be added after Edit_UnsteadyFlowData,
+        so that the method does not end and close the window before the user
+        can make edits.
         """
         rc = self._rc
+        rc.Edit_UnsteadyFlowData()
 
     def Edit_WaterQualityData(self):
         """
-        """
-        rc = self._rc
+        Opens the UWater Quality Data Editor.
 
-    def Edit_XS(self):
-        """
+        Notes
+        -----
+        Run-time does not pause while the Water Quality Data Editor is open, so
+        it is suggested that a message box be added after Edit_WaterQualityData
+        so that the method does not end and close the window before the user
+        can make edits.
         """
         rc = self._rc
+        rc.Edit_WaterQualityData()
+
+    def Edit_XS(self, river, reach, rs):
+        """
+        Opens the Cross Section Editor and displays the selected cross section.
+
+        Parameters
+        ----------
+        river : str
+            The river name of the cross section.
+        reach : str
+            The reach name of the cross section.
+        rs : str
+            The river station of the cross section.
+
+        Notes
+        -----
+        Run-time is paused while edits are made in the Cross Section Editor.
+        Once the Cross Section Editor is closed, run-time resumes.
+        """
+        rc = self._rc
+        res = rc.Edit_XS(river, reach, rs)
 
     # %% Export
     def ExportGIS(self):
         """
-        Imports geometry data from an *.sdf import file.
+        Export HEC-RAS results to an *.sdf export file that can be read into
+        GIS using HEC-GeoRAS.
+
+        Notes
+        -----
+        The Export GIS Editos does NOT open when this subroutine is called.
+        HECRASController uses whatever user inputs (i.e. profiles to export,
+        results to export, types of geometric data to export, etc.) have
+        already been set in the Editor and only wirtes the *.sdf export file.
+        """
+        rc = self._rc
+        rc.ExportGIS()
+
+    # %% Geometry
+    def Geometry(self):
+        """
+        Returs the HECRASGeometry instance.
+
+        Notes
+        -----
+        See HECRASGeometry class for specific methods.
+        """
+        return self._geometry
+
+    def Geometery_GISImport(self, title, Filename):
+        """
+        Imports geometry data from a *.sdf import file.
 
         Parameters
         ----------
         title : str
             The title of the new geometry file to import.
+        Filename : str
+            The path and filename of the sdf file.
 
-        Returns
-        -------
-        str
-            TODO:
+        Notes
+        -----
+        The Import Geometry Data from GIS Editor does NOT open when this method
+        is called. HECRASController uses default settings for importing. A new
+        geometry file is created with this subroutine and al streams and nodes
+        are imported. Note the misspelling "Geometerey"in the name of this
+        method.
         """
         rc = self._rc
-        #title, filename = rc.geometery_gis_import(title)
-
-    # %% Geometry
-    def Geometery_GISImport(self):
-        """
-        """
-
-    def Geometry(self):
-        """
-        """
-        return self._geometry
-
-#    def geometry_breach_param_get_xml(self):
-#        """
-#        Returns a string listing out the dam breach parameters of current plan
-#        in xml format.
-#        """
-#        rc = self._rc
-#        #rc.Geometry_BreachParamGetXML()
-#
-#    def geometry_breach_param_set_xml(self, xml_text):
-#        """
-#        Set the dam breach parameters of current plan in xml format.
-#
-#        Parameters
-#        ----------
-#        xml_test : str
-#            TODO:.
-#        """
-#        rc = self._rc
-#        #rc.Geometry_BreachParamSetXML()
+        rc.Geometery_GISImport(title, Filename)
 
     def Geometry_GetGateNames(self, river, reach, station):
         """Returns a list of gates names.
@@ -326,101 +666,220 @@ class Controller(object):
 
         return rs, NodeType
 
-    def Geometry_GetReaches(self, river_id):
+    def Geometry_GetReaches(self, riv):
         """
         Returns a list of the reach names in a given river id.
 
         Parameters
         ----------
-        river_id : str
-            TODO:
+        riv : str
+            The river ID.
 
         Returns
         -------
-        list of str or None
-            TODO:
+        nReach : int
+            The number of reaches in tge selected river.
+        reach : str
+            The names of the reaches on the selected river
         """
         rc = self._rc
-        res = rc.Geometry_GetReaches(river_id)
-        river_id, reach_count, reach_names = res
+        res = rc.Geometry_GetReaches(riv)
+        riv, nReach, reach = res
 
-        if reach_names is not None:
-            result = list(reach_names)
-        else:
-            result = None
+        result = (nReach, list(reach))
+
         return result
 
     def Geometry_GetRivers(self):
-        """Returns a list of rivers names."""
+        """
+        Returns a list of rivers names.
+
+        Returns
+        ----------
+        nRiver : int
+            The number of rivers.
+        river : list of str
+            The list of the names of the rivers.
+            """
         rc = self._rc
         res = rc.Geometry_GetRivers(None)
-        river_count, river_names = res
+        nRiver, river = res
 
-        if river_names is not None:
-            result = list(river_names)
+        if river is not None:
+            result = nRiver, list(river)
         else:
-            result = None
+            result = 0, []
 
         return result
 
-    def Geometry_SetMann(self):
+    def Geometry_SetMann(self, river, reach, rs, nMann, Mann_n, Station):
         """
-        """
+        Set the Manning's Values, by stationing, for a cross section.
 
-    def Geometry_SetMann_LChR(self):
-        """
-        """
+        Parameters
+        ----------
+        river : str
+            The river to set Manning's n Values.
+        reach : str
+            The reach to set Manning's n Values.
+        rs : str
+            The river station of the cross section to set Manning's n values.
+        nMann : int
+            The number of Manning's n values to add.
+        Mann_n : list of float
+            A list of the Manning's n values to add.
+        Station : list of float
+            A list of the stationing values of the Manning's n breakpoints.
 
-    def Geometry_SetSAArea(self):
+        Notes
+        -----
+        If station values don't exist in the station elevation table,
+        HECRASCntroller will use the closest station to apply the n value to.
         """
-        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Geometry_SetMann(river, reach, rs, nMann, Mann_n, Station,
+                                  errmsg)
+        return res
 
-#    def Geometry_ratio_manning(self, river_id, reach_up_id, node_upstream,
-#                               reach_down_id, node_down, ratio):
-#        """
-#        Changes Manning's n values over a specified range of cross sections by
-#        the input ratio.
-#
-#        Parameters
-#        ----------
-#        river_id : int
-#            The river id
-#        reach_down_id : int
-#            The upstream reach id in the range.
-#        node_down : int
-#            The upstream node id in the range.
-#        reach_down_id : int
-#            The upstream reach id in the range.
-#        node_down : int
-#            The upstream node id in the range.
-#        ratio : float
-#            The ratio to apply to the Manning's n values in the range of cross
-#            sections.
-#
-#        Returns
-#        -------
-#        str
-#            TODO:
-#        """
-#        rc = self._rc
+    def Geometry_SetMann_LChR(self, river, reach, rs, MannLOB, MannChan,
+                              MannROB):
+        """
+        Sets the Manning's n Values, by left verbank, main channel, and right
+        overbank, for a cross section.
+
+        Parameters
+        ----------
+        river : str
+            The river to set Manning's n Values.
+        reach : str
+            The reach to set Manning's n Values.
+        rs : str
+            The river station of the cross section to set Manning's n Values.
+        MannLOB : float
+            Manning's n Value for the Left Overbank,
+        MannChan : float
+            Manning's n Value for the Main Channel.
+        MannROB : float
+            Manning's n Value for the Right Overbank.
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Geometry_SetMann_LChR(river, reach, rs, MannLOB, MannChan,
+                                       MannROB, errmsg)
+        return res
+
+    def Geometry_SetSAArea(self, SAName, Area):
+        """
+        Set the Area of a Storage Area.
+
+        Parameters
+        ----------
+        SAName : str
+            The name of the Storage Area.
+        Area : float
+            The area to set the Storage Area with.
+
+        Notes
+        -----
+        The Geometry_SetSAArea method works in runtime, sets the area, and
+        returns a True value. But, you must ShowRAS and then save the geometry.
+        Otherwise changes to SA area are not saved. Also, make sure to NOT
+        close RAS during run time.
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Geometry_SetSAArea(SAName, Area, errmsg)
+        return res
 
     # %% Get
 
-    def GetDataLocations_Input(self):
-        """
-        """
-
-    def GetDataLocations_Input_count(self):
-        """
+    def GetDataLocations_Input(self, PlanTitle):
         """
 
-    def GetDataLocations_Output(self):
+        Parameters
+        ----------
+        PlanTitle : str
+            The name of the plan.
+
+        Returns
+        -------
+        LocationDesciptions : list of str
+
+        DSSFiles : list of str
+
+        DSSPathnames : list of str
         """
+        rc = self._rc
+        errmsg = ''
+        LocationDesciptions = []
+        DSSFiles = []
+        DSSPathnames = []
+        res = rc.GetDataLocations_Input(PlanTitle, LocationDesciptions,
+                                        DSSFiles, DSSPathnames, errmsg)
+
+        return res
+
+    def GetDataLocations_Input_count(self, PlanTitle):
         """
 
-    def GetDataLocations_Output_count(self):
+        Parameters
+        ----------
+        PlanTitle : str
+            The name of the plan.
+
+        Returns
+        -------
+        int
         """
+        rc = self._rc
+        errmsg = ''
+        res = rc.GetDataLocations_Input_count(PlanTitle, errmsg)
+
+        return res
+
+    def GetDataLocations_Output(self, planTitle):
         """
+        Gets all stage and flow hydrograh output locations, including their dss
+        file names and dss paths.
+
+        Parameters
+        ----------
+        planTitle : str
+            The name of the plan.
+
+        Returns
+        -------
+        DSSFiles : list of str
+            The list of DSS filenames.
+        DSSPathnames : list of str
+            The list of DSS Pathnames.
+        """
+        rc = self._rc
+        errmsg = ''
+        DSSFiles = []
+        DSSPathnames = []
+        res = rc.Geometry_SetSAArea(planTitle, DSSFiles, DSSPathnames, errmsg)
+
+        return res
+
+    def GetDataLocations_Output_count(self, PlanTitle):
+        """
+
+        Parameters
+        ----------
+        PlanTitle : str
+            The name of the plan.
+
+        Returns
+        -------
+        int
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.GetDataLocations_Output_count(PlanTitle, errmsg)
+
+        return res
 
     def GetRASVersion(self):
         """
@@ -437,7 +896,7 @@ class Controller(object):
     def HECRASVersion(self):
         """
         Returns the version number and date of HEC-RAS.
-        
+
         Notes
         -----
         Works the same as GetRASVersion.
@@ -447,22 +906,60 @@ class Controller(object):
         return version
 
     # %% Map
-    def Map_Add(self):
+    def Map_Add(self, Filename):
         """
-        """
+        Adds a map to the Geometry Schematic.
 
+        Parameters
+        ----------
+        Filename : str
+            The path and filename of the image to add.
+        Notes
+        -----
+        This adds a map, but does not turn it on.
+        """
+        rc = self._rc
+        rc.Map_Add(Filename)
+
+    @property
     def mGeometry(self):
-        """
-        """
+        """ """
+        rc = self._rc
+        return rc.mGeometry
 
     # %% Output
     def Output_ComputationLevel_Export(self):
         """
         """
 
-    def Output_GetNode(self):
+    def Output_GetNode(self, riv, reach, rs):
         """
+        Returns the Node ID, for a given River Station.
+
+        Parameters
+        ----------
+        riv : int
+            The river ID number.
+        rch : int
+            Tge reach ID number.
+        rs : str
+            The river station of the desired node ID.
+
+        Returns
+        -------
+        int
+            Node ID.
+
+        Notes
+        -----
+        Works like the Geometry_GetNode method, only this function read from
+        the output file, so a *.O## file is requires (i.e. run computations
+        first).
         """
+        rc = self._rc
+        res = rc.Output_GetNode(riv, reach, rs)
+
+        return res
 
     def Output_GetNodes(self):
         """
@@ -517,76 +1014,315 @@ class Controller(object):
         """
 
     # %% Plan
-    def Plan_GetFilename(self):
+    def Plan_GetFilename(self, planName):
         """
-        """
+        Given a plan name, returns the plan file, including path.
 
-    def Plan_Names(self):
+        Parameters
+        ----------
+        planName : str
+            The name of the plan.
+
+        Returns
+        -------
+        str
+            Plan file and path
         """
+        rc = self._rc
+        res = rc.Plan_GetFilename(planName)
+        return res
+
+    def Plan_Names(self, PlanCount, PlanNames,
+                   IncludeOnlyPlansInBaseDirectory):
         """
+        Gets a list of all the Plan Names in the active HEC-RAS project.
+
+        Parameters
+        ----------
+        IncludeOnlyPlansInBaseDirectory : bool
+
+        Returns
+        -------
+        PlanCount : int
+            The number of plans.
+        PlanNames : list of str
+            The list of plan names.
+        """
+        rc = self._rc
+        res = rc.Plan_GetFilename(PlanCount, PlanNames,
+                                  IncludeOnlyPlansInBaseDirectory)
+        return res
 
     def Plan_Reports(self):
         """
-        """
+        List out the output plan "reports".
 
-    def Plan_SetCurrent(self):
+        Returns
+        -------
+        ReportCount : int
+            The number of plan reports.
+        ReportNames : list of str
+            The list of plan reports.
         """
-        """
+        rc = self._rc
+        ReportCount, ReportNames = [], []
+        res = rc.Plan_GetFilename(ReportCount, ReportNames)
+        return res
 
-    def PlanOutput_IsCurrent(self):
+    def Plan_SetCurrent(self, PlanTitleToSet):
         """
-        """
+        Changes the current plan in the HEC-RAS project to the supplied Plan
+        Name.
 
-    def PlanOutput_SetCurrent(self):
-        """
-        """
+        Parameters
+        ----------
+        PlanTitleToSet : str
+            The name of the plan to set.
 
-    def PlanOutput_SetMultiple(self):
+        Return
+        ------
+        bool
         """
+        rc = self._rc
+        res = rc.Plan_SetCurrent(PlanTitleToSet)
+
+        return res
+
+    def PlanOutput_IsCurrent(self, PlanTitleToCheck, ShowMessageList):
+        """
+        Checks to see if a plan has an output file associated with it.
+
+        Parameters
+        ----------
+        PlanTitleToCheck : str
+            The name of the plan to check.
+        ShowMessageList : bool
+            Whether or not to display a message box showing the plans.
+
+        Returns
+        -------
+        bool
+
+        errmsg : str
+
+        Notes
+        -----
+        Displays a RAS window that shows a list of all the current plans in the
+        RAS Project, and indicates the name and index number of the plan to
+        check if it has been computed. If it does not have an output file (i.e.
+        hasn't been computed), a message box will ask if you want to run the
+        plan. A message box pops up that requires the user to cick OK to
+        continue with run-time. Otherwise the RAS "Current Plan"window opens
+        and closes quickly.
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.Plan_SetCurrent(PlanTitleToCheck, ShowMessageList, errmsg)
+
+        return res
+
+    def PlanOutput_SetCurrent(self, PlanTitleToSet):
+        """
+        Sets the plan output to the selected plan.
+
+        Parameters
+        ----------
+        PlanTitleToSet : str
+            The plan whose output to set as active.
+
+        Returns
+        -------
+        bool
+
+        Notes
+        -----
+        This only works if an output file exists for the selected plan. Does
+        not change the current plan, nly changes the output file that is
+        displayed in the output tables and plots.
+        """
+        rc = self._rc
+        res = rc.Plan_SetCurrent(PlanTitleToSet)
+
+        return res
+
+    def PlanOutput_SetMultiple(self, nPlanTitleToSet, PlanTitleToSet_0,
+                               ShowMessageList):
+        """
+        Sets which pan to set to view in putput plots and tables.
+
+        Parameters
+        ----------
+        nPlanTitleToSet : int
+
+        PlanTitleToSet_0 : str
+            0-based array of plan titles to set.
+        ShowMessageList : bool
+            Whether to have RAS display a message box showing the plan names.
+
+        Returns
+        -------
+        int
+            Number of plans to set
+
+        Notes
+        -----
+        Sets the multiple plan outputs. Only works if output file exist for the
+        selected plan. Does not change the current plan, only changes the
+        output files that are displayed in the output table and plots.
+        PlanOutput_SetMultiple requires a 0-based array for plan_titleToSet_0.
+        The method plan_Naes returns a 1-based array so it must be converted to
+        0-based, prior to calling PlanOutput_SetMultiple.
         """
 
     # %% Plot
-    def PlotHydraulicTables(self):
+    def PlotHydraulicTables(self, river, reach, rs):
         """
-        """
+        Displays the Hydraulic Property Plot for a given River, Reach, and
+        River Station.
 
-    def PlotPF(self):
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
         """
-        """
+        rc = self._rc
+        rc.PlotHydraulicTables(river, reach, rs)
 
-    def PlotPFGeneral(self):
+    def PlotPF(self, river, reach):
         """
-        """
+        Displays the Water Surface Profile Plot for a given River and Reach.
 
-    def PlotRatingCurve(self):
-        """
-        """
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
 
-    def PlotStageFlow(self):
+        Notes
+        -----
+        Must have an output file for this to work.
         """
-        """
+        rc = self._rc
+        rc.PlotPF(river, reach)
 
-    def PlotStageFlow_SA(self):
+    def PlotPFGeneral(self, river, reach):
         """
-        """
+        Displays the General Profile Plot for a given River and Reach.
 
-    def PlotXS(self):
-        """
-        """
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
 
-    def PlotXYZ(self):
+        Notes
+        -----
+        Must have an output file for this to work.
         """
+        rc = self._rc
+        rc.PlotPFGeneral(river, reach)
+
+    def PlotRatingCurve(self, river, reach):
         """
+        Displays the Rating Curve for a given River, Reach and River Station.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+
+        Notes
+        -----
+        Must have an output file for this to work.
+        """
+        rc = self._rc
+        rc.PlotRatingCurve(river, reach)
+
+    def PlotStageFlow(self, river, reach, rs):
+        """
+        Displays the Stage and Flow Hydrograh for a given River, Reach and
+        River Station.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+
+        Notes
+        -----
+        For unsteady plans only. Must have an output file for this to work.
+        """
+        rc = self._rc
+        rc.PlotStageFlow(river, reach, rs)
+
+    def PlotStageFlow_SA(self, SAName):
+        """
+        Displays the Stage and Flow Hydrograph for a given Storage Area.
+
+        Notes
+        -----
+        For unsteady flow only. Must have an output file for this to work.
+        Names for storage areas cannot be read using the HECRASController,
+        therefore the storage area name has to be hard coded, read from a file,
+        or retrieved interactively during run-time.
+        """
+        rc = self._rc
+        rc.PlotStageFlow_SA(SAName)
+
+    def PlotXS(self, river, reach, rs):
+        """
+        Displays the Cross Section Plot for a given River, Reach and River
+        Station.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+        """
+        rc = self._rc
+        rc.PlotXS(river, reach, rs)
+
+    def PlotXYZ(self, river, reach):
+        """
+        Displays the XYZ Plot for given River and Reach.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        """
+        rc = self._rc
+        rc.PlotXYZ(river, reach)
 
     # %% Project
     def Project_Current(self):
         """Returns the file name and path of the current HEC-RAS project."""
         rc = self._rc
         res = rc.Project_Current()
-        
+
         return res
 
-    def Project_New(self, title, filename):
+    def Project_New(self, title, Filename):
         """Starts a new HEC-RAS project with a given project fullpath and sets
         the title.
 
@@ -594,35 +1330,35 @@ class Controller(object):
         ----------
         title : str
             The title if the new HEC-RAS project.
-        filename : str
+        Filename : str
             Full path of the new HEC-RAS project.
         """
         rc = self._rc
 
         # Check relative path to script
-        dirpath = osp.dirname(osp.abspath(filename))
+        dirpath = osp.dirname(osp.abspath(Filename))
         if osp.isdir(dirpath):
             # Create directory recursively
             os.makedirs(dirpath)
         else:
-            fullpath = osp.abspath(filename)
+            fullpath = osp.abspath(Filename)
 
         rc.Project_Open(title, fullpath)
 
-    def Project_Open(self, project_filename):
+    def Project_Open(self, ProjectFileName):
         """
         Open a HEC-RAS project with a given project path.
 
         Parameters
         ----------
-        project_filename : str
+        ProjectFileName : str
             Full path of the given HEC-RAS project to open.
         """
         rc = self._rc
 
         # Check relative path to script
-        if osp.isfile(project_filename):
-            fullpath = osp.abspath(project_filename)
+        if osp.isfile(ProjectFileName):
+            fullpath = osp.abspath(ProjectFileName)
         else:
             error = 'File "{}" not found'.format(fullpath)
             raise IOError(error)
@@ -636,62 +1372,162 @@ class Controller(object):
         rc = self._rc
         rc.Project_Save()
 
-    def Project_SaveAs(self, new_project_name):
+    def Project_SaveAs(self, newProjectName):
         """
         Saves as a new project with a given project file name and path.
 
         Parameters
         ----------
-        new_project_name : str
+        newProjectName : str
             Path and file name of the HEC-RAS project to save as.
         """
         rc = self._rc
-        fullpath = osp.abspath(new_project_name)
+        fullpath = osp.abspath(newProjectName)
         rc.Project_SaveAs(fullpath)
-
-#    def quit_ras(self):
-#        """
-#        Closes HEC-RAS.
-#
-#        Notes
-#        -----
-#        quit_ras should be called at the end of each session that open a
-#        HEC-RAS project. Qithout quit_ras, RAS will remain open as a process
-#        after a script is completed.
-#        """
-#        rc = self._rc
-#        rc.QuitRAS()
 
     # %% Schematic
     def Schematic_ReachCount(self):
         """
+        Returns the number of reaches in the current HEC-RAS project's active
+        geometry.
+
+        Returns
+        -------
+        int
+            Number of Reaches.
         """
+        rc = self._rc
+        res = rc.Schematic_ReachCount()
+        return res
 
     def Schematic_ReachPointCount(self):
         """
+        Returns the total number of reach vertex points that make up all of the
+        schematic reach lines in the active geometry.
+
+        Returns
+        -------
+        int
+            Number of reach vertex points.
+
         """
+        rc = self._rc
+        res = rc.Schematic_ReachPointCount()
+        return res
 
     def Schematic_ReachPoints(self):
         """
+        Returns rivers, reaches and x-y coordinates for each reach.
+
+        Returns
+        -------
+        RiverName_0 : list of str
+            The list of river names.
+        ReachName_0 : list of str
+            The list of reach names.
+        ReachStartIndex_0 : list of int
+            The list of starting index numbers for coordinate points.
+        ReachPointCount_0 : list of int
+            The list of the number of reach points for each reach
+        ReachPointX_0 : list of float
+            The list of x coordinate points.
+        ReachPointY_0 : list of float
+            The list of y coordinate points.
+
+        Notes
+        -----
+        All array paraeters are 0-based for this method and must be
+        redimensioned.
         """
+        rc = self._rc
+        res = rc.Schematic_ReachPoints()
+        (RiverName_0, ReachName_0, ReachStartIndex_0, ReachPointCount_0,
+         ReachPointX_0, ReachPointY_0) = res
+
+        return (RiverName_0, ReachName_0, ReachStartIndex_0,
+                ReachPointCount_0, ReachPointX_0, ReachPointY_0)
 
     def Schematic_XSCount(self):
         """
+        Returns the number of cross sections in the current HEC-RAS project's
+        active geometry.
+
+        Returns
+        -------
+        int
+            Number of Cross Sections
         """
+        rc = self._rc
+        res = rc.Schematic_XSCount()
+        return res
 
     def Schematic_XSPointCount(self):
         """
+        Returns the total number of cross secton vertex points that make up all
+        of the cross sections in the active geometry.
+
+        Returns
+        -------
+        int
+            Number of cross section points.
         """
+        rc = self._rc
+        res = rc.Schematic_XSPointCount()
+        return res
 
     def Schematic_XSPoints(self):
         """
-        """
+        Returns river stations, their reaches and x-y coordinates for each
+        river station.
 
-    # %% Set
+        Returns
+        -------
+        RSName_0 : list of str
+            The list of river stations.
+        ReachIdex_0 : list of int
+            The list of reach IDs.
+        XSStartIndex_0 : list of int
+            The list of starting index numbers for coordinate points.
+        XSPointCount_0 : list of int
+            The list of the number of cross section points for each reach cross
+            section.
+        XSPointX_0 : list of float
+            The list of cross section x coordinate points.
+        ReachPointY_0 : list of float
+            The list of cross section y coordinate points.
 
-    def SetDataLocations(self):
+        Notes
+        -----
+        All array paraeters are 0-based for this method and must be
+        redimensioned.
         """
+        rc = self._rc
+        res = rc.Schematic_XSPoints()
+        (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
+         XSPointX_0, XSPointY_0) = res
+
+        return (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
+                XSPointX_0, XSPointY_0)
+
+    # %% Set TODO:
+    def SetDataLocations(self, PlanTitle, count, LocationDesciptions, DSSFiles,
+                         DSSPathnames):
         """
+        PlanTitle : str
+
+        count : int
+
+        LocationDesciptions : str
+
+        DSSFiles : str
+
+        DSSPathnames : str
+
+        """
+        rc = self._rc
+        errmsg = ''
+        res = rc.SetDataLocations(PlanTitle, count, LocationDesciptions,
+                                  DSSFiles, DSSPathnames, errmsg)
 
     # %% Show
     def ShowRas(self):
@@ -716,30 +1552,142 @@ class Controller(object):
     # %% Steady
     def SteadyFlow_ClearFlowData(self):
         """
-        """
+        Clears the flow data in the current plan's steady flow file.
 
-    def SteadyFlow_FixedWSBoundary(self):
+        Notes
+        -----
+        Fr steady flow plans only.
         """
+        rc = self._rc
+        rc.SteadyFlow_ClearFlowData()
+
+    def SteadyFlow_FixedWSBoundary(self, river, reach, Downstream, WSElev):
         """
+        Sets fixed water surface boundary conditions.
+
+        Parameters
+        ----------
+        river : str
+            The River name.
+        reach : str
+            The Reach name.
+        Downstream : bool
+            True if this is a downstream boundary. Otherwise False.
+        WSElev : float
+            The list of water surface elevations to set as fixed water surface
+            boundary conditions..
+
+        Notes
+        -----
+        For steady flow plans only. The WSElev list contains fixed water
+        surface elevations for each profile in the active plan's flow file.
+        """
+        rc = self._rc
+        rc.SteadyFlow_FixedWSBoundary(river, reach, Downstream, WSElev)
 
     def SteadyFlow_nProfile(self):
         """
-        """
+        Returns the number of setady flow profiles in the current plan's active
+        steady flow file.
 
-    def SteadyFlow_SetFlow(self):
+        Notes
+        -----
+        For steady flow plans only.
         """
+        rc = self._rc
+        res = rc.SteadyFlow_nProfile()
+        return res
+
+    def SteadyFlow_SetFlow(self, river, reach, rs, Flow):
         """
+        For a given River Station, sets the flows for each profile in the
+        active plan's steady flow file.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+        Flow : float
+            The list/tuple of flow values to add.
+
+        Notes
+        -----
+        For steady flow plans only. If the River Station currently is not in
+        the flow table, it will added. Need to first determine the number of
+        profiles to set up the item count in the Flow array.
+        """
+        rc = self._rc
+        res = rc.SteadyFlow_SetFlow(river, reach, rs, Flow)
 
     # %% Table
-    def TablePF(self):
+    def TablePF(self, river, reach):
         """
-        """
+        Displays the Profile Output Table for a given river, reach.
 
-    def TableXS(self):
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
         """
+        rc = self._rc
+        res = rc.TablePF(river, reach)
+
+    def TableXS(self, river, reach, rs):
         """
+        Displays the Cross Section Output Table for a given river, reach and
+        river station.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+        """
+        rc = self._rc
+        res = rc.TableXS(river, reach, rs)
 
     # %% Unsteady
-    def UnsteadyFlow_SetGateOpening_Constant(self):
+    def UnsteadyFlow_SetGateOpening_Constant(self, river, reach, rs, GateName,
+                                             OpenHeight):
         """
+        Sets the gate opening for a specified gate group to a constant value in
+        the Time Series Gate Opening boundary condition.
+
+        Parameters
+        ----------
+        river : str
+            The river name.
+        reach : str
+            The reach name.
+        rs : str
+            The river station.
+        GateName : str
+            The gate group name to set a new gate opening height.
+        OpenHeight : float
+            The gate opening height to set.
+
+        Notes
+        -----
+        The time interval in the TS Gate Opening boundary condition is set to 1
+        year.
         """
+        rc = self._rc
+        errmsg = ''
+        res = rc.UnsteadyFlow_SetGateOpening_Constant(river, reach, rs,
+                                                      GateName, OpenHeight)
+        river, reach, rs, GateName, OpenHeight, errmsg = res
+        return errmsg
+
+
+class ControllerDeprecated(object):
+    """ """
+    pass
