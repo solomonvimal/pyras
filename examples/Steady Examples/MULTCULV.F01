@@ -1,0 +1,17 @@
+Flow Title=Multiple Culvert Flow Data
+Number of Profiles= 3 
+Profile Names=5 yr        ,10 yr       ,25 yr       
+River Rch & RM=Spring Creek,Culvrt Reach,20.535  
+     250     400     600
+Boundary for River Rch & Prof#=Spring Creek,Culvrt Reach, 1 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=29.8
+Boundary for River Rch & Prof#=Spring Creek,Culvrt Reach, 2 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=31.2
+Boundary for River Rch & Prof#=Spring Creek,Culvrt Reach, 3 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=31.9

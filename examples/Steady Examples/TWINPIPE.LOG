@@ -1,0 +1,355 @@
+OPENED LOG FILE
+
+        Version 4.1.0 Jan 2010
+
+
+ At river station 20.237  
+
+        **** INTBOUND ****          INTERNAL BOUNDARY
+
+    <start MULTIPLE OPENING routines>
+
+        **** I_OPEN ****          INTERNAL OPENING
+
+        **** I_BEG ****          INTERNAL BOUNDARY BEGINNING
+
+        **** EXIT I_BEG ****
+
+<start the CULVERT routines>
+ QTOTAL       600.000000
+
+        **** CULVERT ****           GET ENERGY FROM CULVERT
+
+        **** C_BEG ****             CULVERT BEGINNING
+
+   CHART   SCALE   TYPE   NUMBER    RISE    SPAN    LENGTH   ELV. US   ELV. DS    SLOPE   MANN N   USE EQ. 26
+
+     1       1       1       2      6.00    0.00     50.00     25.10     25.00  0.00200  0.01300       T
+
+   Q/CULVERT  ENTRANCE  EXIT     K       M        C        Y    SLOPE CORRECTION
+
+      300.00    0.50    1.00  0.0098   2.000  0.0398     0.670       -.5
+
+        **** EXIT C_BEG ****
+
+DETERMINE CULVERT ENERGY WITHOUT WEIR
+
+        **** C_EG ****              CULVERT ENERGY
+
+        **** C_EG ****              CULVERT ENERGY
+
+    INLET IS SUBMERGED
+
+    ENERGY FOR INLET CONTROL =    33.59
+
+    ENERGY FOR OUTLET CONTROL =    35.00
+
+        **** EXIT C_EG ****
+
+        **** EXIT C_EG ****
+
+                    << CULVERT FLOW >>      C-EG =      35.00      Q-CULVERT =       600.0
+
+DETERMINE CULVERT ENERGY WITH WEIR
+
+        **** C_W_ITR ****           CULVERT WEIR ITERATION
+
+ FORCE INLET CONTROL
+
+                    << WEIR FLOW >>      W-EG =***********      Q-WEIR =        78.5
+
+                    << CULVERT FLOW >>      C-EG =      32.48      Q-CULVERT =       521.5
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  1     34.36     32.48       79.      521.     34.41     33.71      600.      521.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.36      Q-WEIR =        34.7
+
+                    << CULVERT FLOW >>      C-EG =      33.09      Q-CULVERT =       565.3
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  2     34.14     33.09       34.      565.     34.19     34.73      600.      565.      600.     32.19     32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.24      Q-CULVERT =       576.0
+
+                    << WEIR FLOW >>      W-EG =      34.14      Q-WEIR =         0.0
+
+                    << CULVERT FLOW >>      C-EG =      33.42      Q-CULVERT =       588.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    588.0    33.42       0.       0.  0.0000     600.     588.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.51      Q-CULVERT =       594.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    594.0    33.51       0.       0.  0.0000     600.     594.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.55      Q-CULVERT =       597.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    597.0    33.55       0.       0.  0.0000     600.     597.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.57      Q-CULVERT =       598.5
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    598.5    33.57       0.       0.  0.0000     600.     598.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.58      Q-CULVERT =       599.2
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    599.2    33.58       0.       0.  0.0000     600.     599.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       599.6
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    599.6    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       599.8
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    599.8    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       599.9
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    599.9    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =       600.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    600.0    33.59       0.       0.  0.0000     600.     600.    34.19    33.71    600.0    32.19    32.13
+
+        EG        Q-WEIR     Q-CULVERT     Q/CULVERT
+     33.24          0.00        600.00        300.00
+
+ FORCE OUTLET CONTROL
+
+                    << WEIR FLOW >>      W-EG =      33.24      Q-WEIR =        78.5
+
+                    << CULVERT FLOW >>      C-EG =      34.30      Q-CULVERT =       521.5
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  1     34.36     34.30       79.      521.     34.41     34.30      600.      521.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.36      Q-WEIR =        74.1
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       525.9
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  2     34.34     34.34       34.      526.     34.39     74.05      600.      526.      600.     32.19     32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.78      Q-CULVERT =       576.0
+
+                    << WEIR FLOW >>      W-EG =      34.34      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.6
+
+                    << CULVERT FLOW >>      C-EG =      34.66      Q-CULVERT =       563.0
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    563.0    34.66       0.       0.  0.0000     563.     526.    34.39    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.50      Q-CULVERT =       544.5
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    544.5    34.50       0.       0.  0.0000     544.     526.    34.39    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.42      Q-CULVERT =       535.2
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        93.8
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    535.2    34.42      94.     629.  1.0484     535.     526.    34.39    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.38      Q-CULVERT =       530.6
+
+                    << WEIR FLOW >>      W-EG =      34.42      Q-WEIR =        83.6
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    530.6    34.38      84.     614.  1.0236     531.     526.    34.38    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.36      Q-CULVERT =       528.3
+
+                    << WEIR FLOW >>      W-EG =      34.38      Q-WEIR =        78.7
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    528.3    34.36      79.     607.  1.0116     528.     526.    34.36    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.35      Q-CULVERT =       527.1
+
+                    << WEIR FLOW >>      W-EG =      34.36      Q-WEIR =        76.3
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    527.1    34.35      76.     603.  1.0057     527.     526.    34.35    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       526.5
+
+                    << WEIR FLOW >>      W-EG =      34.35      Q-WEIR =        75.2
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    526.5    34.34      75.     602.  1.0028     527.     526.    34.34    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       526.2
+
+                    << WEIR FLOW >>      W-EG =      34.34      Q-WEIR =        74.6
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    526.2    34.34      75.     601.  1.0014     526.     526.    34.34    34.30    600.0    32.19    32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       526.1
+
+                    << WEIR FLOW >>      W-EG =      34.34      Q-WEIR =        74.3
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       525.7
+
+Q-CULVERT      EG   Q-WEIR   Q-CALC  Q-RATIO   Q-MAX    Q-MIN    EG-MAX   EG-MIN   QTOTAL    EG-DS   WSEL-DS
+    525.7    34.34      74.     600.  1.0000     526.     526.    34.34    34.30    600.0    32.19    32.13
+
+        EG        Q-WEIR     Q-CULVERT     Q/CULVERT
+     34.34         74.30        525.70        262.85
+
+ TURN FORCING OFF
+
+                    << WEIR FLOW >>      W-EG =      34.34      Q-WEIR =        19.4
+
+                    << CULVERT FLOW >>      C-EG =      34.82      Q-CULVERT =       580.6
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  1     34.04     34.82       19.      581.     34.37     33.99      581.      515.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.04      Q-WEIR =        28.6
+
+                    << CULVERT FLOW >>      C-EG =      34.74      Q-CULVERT =       571.4
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  2     34.11     34.74       29.      571.     34.37     34.06      571.      515.      600.     32.19     32.13
+
+                    << CULVERT FLOW >>      C-EG =      34.78      Q-CULVERT =       576.0
+
+                    << WEIR FLOW >>      W-EG =      34.11      Q-WEIR =        46.8
+
+                    << CULVERT FLOW >>      C-EG =      34.57      Q-CULVERT =       553.2
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  3     34.21     34.57       47.      553.     34.37     34.16      553.      515.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.21      Q-WEIR =        57.4
+
+                    << CULVERT FLOW >>      C-EG =      34.48      Q-CULVERT =       542.6
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  4     34.27     34.48       57.      543.     34.37     34.22      543.      515.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.27      Q-WEIR =        70.1
+
+                    << CULVERT FLOW >>      C-EG =      34.37      Q-CULVERT =       529.9
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  5     34.32     34.37       70.      530.     34.37     34.27      530.      515.      600.     32.19     32.13
+
+                    << WEIR FLOW >>      W-EG =      34.32      Q-WEIR =        74.1
+
+                    << CULVERT FLOW >>      C-EG =      34.34      Q-CULVERT =       525.9
+
+ NTRL  EG-WEIR  EG-CULVERT  Q-WEIR  Q-CULVERT  EG-MAX    EG-MIN    Q-MAX     Q-MIN    QTOTAL      EG-DS   WSEL-DS
+  6     34.34     34.34       74.      526.     34.37     34.34      530.      526.      600.     32.19     32.13
+
+        EG        Q-WEIR     Q-CULVERT     Q/CULVERT
+     34.34         74.13        525.87        262.94
+
+        **** EXIT C_W_ITR  ****
+
+    Q & EG EACH CULVERT     1    525.9   34.34
+
+For CULVERT       20.237   the  EG  is      34.34
+
+        **** EXIT CULVERT ****
+
+        MULTIPLE CRITICAL WATER SURFACES WERE FOUND
+
+        CRITICAL WATER SURFACES =    27.79     33.71
+
+        FINAL CRITICAL WATER SURFACE =    27.79     DID IT CONVERGE?     T
+
+
+SUBCRITICAL MOMENTUM AT THIS CROSS SECTION IS      2140.
+
+        FINAL CRITICAL WATER SURFACE =    34.17     DID IT CONVERGE?     T
+
+
+ For cross section 20.238   the WSEL and EG is      34.32     34.34
+
+        **** EXIT I_OPEN ****
+
+        **** EXIT INTBOUND ****

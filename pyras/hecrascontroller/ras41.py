@@ -3,30 +3,9 @@
 import os
 import os.path as osp
 
-import win32com.client
 
-from .hecrasgeometry import HECRASGeometry
-
-
-class HECRASController(object):
-    """Main object containing all functionality of the HECRAS Controller"""
-
-    def __init__(self):
-        self._rc = win32com.client.Dispatch("RAS41.HECRASController")
-        self._geometry = HECRASGeometry()
-
-#    def Compute_Complete(self):
-#        """
-#        Returns a true value once computations have completed
-#
-#        Notes
-#        -----
-#        Can be called during computations if Blocking Mode in
-#        Compute_CurrentPlan is ser to False.
-#        """
-#        rc = self._rc
-#        res = rc.Compute_Complete()
-#        print(res)
+class Controller(object):
+    """HECRAS Controller vesrsion RAS41"""
 
     # %% Compute
     def Compute_Cancel(self):

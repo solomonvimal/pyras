@@ -1,0 +1,50 @@
+Flow Title=10, 50, and 100 year flow events
+Number of Profiles= 3 
+Profile Names=10 yr,50 yr,100 yr
+River Rch & RM=Bear Run,Bear Run        ,1470    
+     130     350     440
+River Rch & RM=Spruce Creek,Upper Spruce    ,2500    
+     300     800    1000
+River Rch & RM=Spruce Creek,Lower Spruce    ,465     
+     300     800    1000
+River Rch & RM=Spruce Creek,Middle Spruce   ,1960    
+     170     450     560
+Boundary for River Rch & Prof#=Spruce Creek,Upper Spruce    , 1 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Upper Spruce    , 2 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Upper Spruce    , 3 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Middle Spruce   , 1 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Middle Spruce   , 2 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Middle Spruce   , 3 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Bear Run,Bear Run        , 1 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Bear Run,Bear Run        , 2 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Bear Run,Bear Run        , 3 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Lower Spruce    , 1 
+Up Type= 0 
+Dn Type= 3 
+Dn Slope=0.0004
+Boundary for River Rch & Prof#=Spruce Creek,Lower Spruce    , 2 
+Up Type= 0 
+Dn Type= 3 
+Dn Slope=0.0004
+Boundary for River Rch & Prof#=Spruce Creek,Lower Spruce    , 3 
+Up Type= 0 
+Dn Type= 3 
+Dn Slope=0.0004

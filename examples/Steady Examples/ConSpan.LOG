@@ -1,0 +1,175 @@
+OPENED LOG FILE
+
+        Version 4.1.0 Jan 2010
+
+
+ At river station 20.237  
+
+        **** INTBOUND ****          INTERNAL BOUNDARY
+
+    <start MULTIPLE OPENING routines>
+
+        **** I_OPEN ****          INTERNAL OPENING
+
+        **** I_BEG ****          INTERNAL BOUNDARY BEGINNING
+
+        **** EXIT I_BEG ****
+
+<start the CULVERT routines>
+ QTOTAL      1000.000000
+
+        **** CULVERT ****           GET ENERGY FROM CULVERT
+
+        **** C_BEG ****             CULVERT BEGINNING
+
+   CHART   SCALE   TYPE   NUMBER    RISE    SPAN    LENGTH   ELV. US   ELV. DS    SLOPE   MANN N   USE EQ. 26
+
+    61       3       9       1      6.00   28.00     50.00     25.10     25.00  0.00200  0.01300       F
+
+   Q/CULVERT  ENTRANCE  EXIT     K       M        C        Y    SLOPE CORRECTION
+
+     1000.00    0.50    1.00  0.4680   0.667  0.0370     0.566       -.5
+
+        **** EXIT C_BEG ****
+
+DETERMINE CULVERT ENERGY WITHOUT WEIR
+
+        **** C_EG ****              CULVERT ENERGY
+
+        **** C_EG ****              CULVERT ENERGY
+
+        **** C_INLET ****           CULVERT ENERGY WITH INLET CONTROL
+
+    EQ. 26 BRACKET TERM =   2.93
+
+    INLET IS NOT SUBMERGED
+
+    ENERGY FOR INLET CONTROL =    30.85
+
+        **** EXIT C_INLET ****
+
+        **** C_OUTLET ****          CULVERT ENERGY WITH OUTLET CONTROL
+
+        **** C_DPTH_O ****          CULVERT DEPTH AT OUTLET
+
+        **** EXIT C_DPTH_O ****
+
+        **** C_FULL ****            FRICTION LOSS FROM CULVERT FLOWING FULL
+
+        **** EXIT C_FULL ****
+
+ ENTR. LOSS  DEPTH I  FRIC LOSS  VEL HEAD  IS-FULL WENT-FULL LENGTH-FULL EXIT LOSS  DEPTH O
+       0.40     6.00       0.19      0.80      T       F           50.00      0.60     6.00
+
+    ENERGY FOR OUTLET CONTROL =    33.59
+
+        **** EXIT C_OUTLET ****
+
+        **** EXIT C_EG ****
+
+        **** EXIT C_EG ****
+
+                    << CULVERT FLOW >>      C-EG =      33.59      Q-CULVERT =      1000.0
+
+    Q & EG EACH CULVERT     1   1000.0   33.59
+
+For CULVERT       20.237   the  EG  is      33.59
+
+        **** EXIT CULVERT ****
+
+        **** CRITWS ****            DETERMINE CRITICAL WSEL
+
+        **** CRIT_PAR ****          USE PARABOLIC METHOD
+
+        **** EXIT CRIT_PAR ****
+        PARABOLIC METHOD DID NOT CONVERGE -- TRY SLICE/SECANT METHOD
+
+        SLICE     WSEL           EG
+          1       25.363       320.2454
+          2       25.615        98.9787
+          3       25.868        57.5294
+          4       26.121        43.3179
+          5       26.373        36.9825
+          6       26.626        33.7242
+          7       26.879        31.9032
+          8       27.131        30.8388
+          9       27.384        30.2083
+         10       27.636        29.8433
+         11       27.889        29.6493
+         12       28.142        29.5699
+        SEARCH FOR LOCAL MINIMUM
+
+      WSX            EGX            WSMAX          WSMIN
+      28.26652       29.56172       28.26652       28.14177
+      28.14873       29.56901       28.26652       28.14873
+      28.15873       29.56777       28.26652       28.15873
+      28.23957       29.56203       28.26652       28.23957
+      28.25979       29.56172       28.25979       28.23957
+      28.24048       29.56201       28.25979       28.24048
+      28.25048       29.56181       28.25979       28.25048
+         13       28.394        29.5701
+         14       28.647        29.6270
+         15       28.900        29.7253
+         16       29.152        29.8545
+         17       29.405        30.0073
+         18       29.658        30.1791
+         19       29.910        30.3656
+         20       30.163        30.5638
+         21       30.416        30.7713
+         22       30.668        30.9860
+         23       30.921        31.2064
+         24       31.174        31.4316
+         25       31.426        31.6605
+         26       31.679        31.8925
+         27       31.931        32.1271
+         28       32.184        32.3640
+         29       32.437        32.6026
+         30       32.689        32.8429
+         31       32.942        33.0845
+         32       33.195        33.3272
+         33       33.447        33.5709
+         34       33.700        33.8155
+         35       33.710        33.7786
+        SEARCH FOR LOCAL MINIMUM
+
+      WSX            EGX            WSMAX          WSMIN
+      33.70750       33.78586       33.71000       33.70750
+         36       33.943        34.0129
+         37       34.175        34.2385
+         38       34.408        34.4649
+         39       34.641        34.6921
+         40       34.873        34.9198
+         41       35.106        35.1481
+         42       35.339        35.3769
+         43       35.571        35.6061
+         44       35.804        35.8356
+         45       36.037        36.0655
+         46       36.269        36.2956
+         47       36.502        36.5260
+         48       36.735        36.7567
+         49       36.967        36.9875
+
+        MULTIPLE CRITICAL WATER SURFACES WERE FOUND
+
+        CRITICAL WATER SURFACES =    28.27     33.71
+
+        FINAL CRITICAL WATER SURFACE =    28.27     DID IT CONVERGE?     T
+
+
+        **** EXIT CRITWS ****
+
+        **** CRITWS ****            DETERMINE CRITICAL WSEL
+
+        **** EXIT CRITWS ****
+
+        **** MIX_PROF ****          MIXED PROFILE CHECKS
+
+SUBCRITICAL MOMENTUM AT THIS CROSS SECTION IS      1449.
+
+        **** EXIT MIXPROF ****
+
+ For cross section 20.238   the WSEL and EG is      33.47     33.59
+
+        **** EXIT I_OPEN ****
+
+        **** EXIT INTBOUND ****

@@ -1,0 +1,9 @@
+Flow Title=100 Year Discharge
+Number of Profiles= 1 
+Profile Names=100 yr
+River Rch & RM=Putah Creek,Putah Creek     ,12      
+    3200
+Boundary for River Rch & Prof#=Putah Creek,Putah Creek     , 1 
+Up Type= 3 
+Up Slope=0.01
+Dn Type= 2 

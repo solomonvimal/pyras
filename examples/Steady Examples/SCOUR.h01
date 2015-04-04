@@ -1,0 +1,163 @@
+HDes Title=Hydraulic Design Data
+Version=Version 4.0 Beta
+Default HD Type=Bridge Scour
+
+River,Reach,RS,Func,Prof=Pine Creek      ,Pine Creek      ,10.36   ,1, 1 
+BS Contr Y1=,,
+BS Contr V1=,,
+BS Contr Y0=,,
+BS Contr Q2=,,
+BS Contr W2=,,
+BS Contr D50 mm=2.012195,2.012195,2.012195
+BS Contr Eqn= 0 , 0 , 0 
+BS Contr Q1=,,
+BS Contr W1=,,
+BS Contr S1=,,
+BS Contr Water Temp=60
+BS Contr K1=0.59,0.64,0.59
+BS Pier Method,Avg Y1,V1= 0 ,,
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+Pier Data K1,a,Y1,V1,Eqn,Angle,L,K2,K3,D90,K4,ap,D50mm
+1,5,0,0, 0 ,0,50,1, 1 ,2.44,1,0,2.01, 2 ,1
+BS Abut K1 & Eqn= 2 , 0 
+BS Abut Toe Sta=,
+BS Abut Approach Sta=,
+BS Abut L=,
+BS Abut Y1=,
+BS Abut Skew=90,90
+BS Abut ap=763.12,999.79
+BS Abut Ya=,
+BS Abut Qe=,
+BS Abut Ae=,
+BS Abut V1=,
+
+Uniform Flow Gradation=,,
+Uniform Flow Data for Depth, Slope, Discharge, and Roughness Solutions
+Temperature=
+Specific Gravity=
+Uniform Flow d84=
+Uniform Flow d50=
+Uniform Flow d16=
+Uniform Flow Depth=
+Uniform Flow Slope=
+Uniform Flow Discharge=
+Selected River Station=
+X, Y, Roughness Eq, Roughness Value, Equivalent Mannings #.  Number of Nodes= 0 
+Uniform Flow Data for Bottom Width Solutions
+Temperature (Width)=
+Specific Gravity (Width)=
+Uniform Flow Depth (Width)=
+Uniform Flow Slope (Width)=
+Uniform Flow Discharge (Width)=
+Overbank Left Side Slope=
+Overbank Right Side Slope=
+Overbank Left Width=
+Overbank Right Width=
+Overbank Height=
+Overbank Invert=
+Main Channel Left Side Slope=
+Main Channel Right Side Slope=
+Main Channel Left Width=
+Main Channel Right Width=
+Main Channel Height=
+Main Channel Invert=
+Low Flow Channel Left Side Slope=
+Low Flow Channel Right Side Slope=
+Low Flow Channel Left Width=
+Low Flow Channel Right Width=
+Low Flow Channel Height=
+Low Flow Channel Invert=
+Solve for bottom width in the Main Channel, cbobox index value=0
+Solve for bottom width equally on the left and right side of centerline, cbobox index value=0
+X, Y, Roughness Eq, Roughness Value, Equivalent Mannings # (for width).  Number of nodes= 0 
+
+Stable Channel Design-Copeland Method
+Stable Design Discharge=
+Stable Specific Gravity=
+Stable d84=
+Stable d50=
+Stable d16=
+Stable Temperature=
+Stable Valley Slope (optional)=
+Stable Median Channel Width (optional)=
+Stable Design Left Side Slope=
+Stable Design Right Side Slope=
+Stable Design Left Side Slope Equation=Mannings
+Stable Design Right Side Slope Equation=Mannings
+Stable Design Left Side Slope Roughness Value=
+Stable Design Right Side Slope Roughness Value=
+Stable Supply Sediment Concentration=
+Stable Supply Channel Width=
+Stable Supply Channel Bank Height=
+Stable Supply Channel Slope=
+Stable Supply Left Side Slope=
+Stable Supply Right Side Slope=
+Stable Supply Left Side Slope Equation=Mannings
+Stable Supply Right Side Slope Equation=Mannings
+Stable Supply Left Side Slope Roughness Value=
+Stable Supply Right Side Slope Roughness Value=
+RAS calculates inflowing sediment concentration.  Opt Value=0
+Lower Regime is selected as default for transitional conditions.  Opt Value=0
+
+Stable Channel Design-Regime Method
+Regime d50=
+Regime Discharge=
+Regime Sediment Concentration=
+Regime Side Factor=
+Regime Temperature=
+
+Stable Channel Design-Tractive Force Method
+Tractive Force d Left=
+Tractive Force d Bed=
+Tractive Force d Right=
+Tractive Force Depth=
+Tractive Force Discharge=
+Tractive Force Angle of Repose Bed=
+Tractive Force Angle of Repose Left=
+Tractive Force Angle of Repose Right=
+Tractive Force Roughness Bed=
+Tractive Force Roughness Left=
+Tractive Force Roughness Right=
+Tractive Force Slope=
+Tractive Force Specific Gravity Bed=
+Tractive Force Specific Gravity Left=
+Tractive Force Specific Gravity Right=
+Tractive Force Side Slope Left=
+Tractive Force Side Slope Right=
+Tractive Force Shield's Parameter Bed=
+Tractive Force Shield's Parameter Left=
+Tractive Force Shield's Parameter Right=
+Tractive Force Temperature=
+Tractive Force Width=
+Tractive Force Bed Equation=Mannings
+Tractive Force Left Side Slope Equation=Mannings
+Tractive Force Right Side Slope Equation=Mannings
+Solution Method=Lane
+
+Sediment Transport Potential
+Number of Sediment Reaches=0
+Active Sediment Reach=
+
+Sediment Impact Assessment Module
+Siam Short ID=
+Siam Plan Name=
+Number of Siam Sediment Reaches=0
+Active Siam Sediment Reach=
+User-Defined Sediment Particle Sizes=False
+User-Defined Sediment Particle Sizes Up, Down, Lable=False
+Multiple Transport Functions By Grain Size=False
+
+Number of Siam Bed Samplings= 0 
+Number Duration Curves= 0 
+Number Sediment Property Groups= 0 
+Number Sediment Sources= 0 
+Number Sediment Source Groups= 0 

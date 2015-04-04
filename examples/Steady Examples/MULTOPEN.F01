@@ -1,0 +1,17 @@
+Flow Title=Beaver Cr. - 3 Flows
+Number of Profiles= 3 
+Profile Names=25 yr,100 yr,May '74 flood
+River Rch & RM=Beaver Creek,Kentwood        ,5.99    
+    5000   10000   14000
+Boundary for River Rch & Prof#=Beaver Creek,Kentwood        , 1 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=209.5
+Boundary for River Rch & Prof#=Beaver Creek,Kentwood        , 2 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=210.5
+Boundary for River Rch & Prof#=Beaver Creek,Kentwood        , 3 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=211.8

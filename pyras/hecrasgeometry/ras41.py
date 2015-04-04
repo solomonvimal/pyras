@@ -2,13 +2,9 @@
 """
 import math
 
-import win32com.client
 
-
-class HECRASGeometry(object):
+class Geometry(object):
     """ """
-    def __init__(self):
-        self._geometry = win32com.client.Dispatch("RAS41.HECRASGeometry")
 
     def nNode(self, riv, rch):
         """

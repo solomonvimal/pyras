@@ -19,12 +19,31 @@ PyRAS
 Description
 -----------
 
-A Python Wrapper of HEC-RAS controller
+A Python Wrapper of HEC-RAS controller.
 
+
+Requirements
+------------
+
+This package depends on pywin32 for accessing the HECRASController interface.
+
+Additionally, you need to have a working version of HEC-RAS installed. 
+Current support includes version 4.1.0 and 5.0.0.
+
+
+Installation
+------------
+
+.. code-block:: python
+
+	pip install pyras
+
+	
 License
 -------
 
 MIT License. Copyright 2015 - Gonzalo Peña-Castellanos
+
 
 Release date
 ------------

@@ -5,7 +5,7 @@
 import pyras
 
 
-project = r'examples\Steady Examples\BEAVCREK.p01'
+project = r'examples\Steady Examples\BEAVCREK.prj'
 rc = pyras.HECRASController()
 
 rc.ShowRas()
@@ -109,3 +109,5 @@ print('GetRASVersion', res)
 
 res = rc.HECRASVersion()
 print('HECRASVersion', res)
+
+rc.QuitRas()

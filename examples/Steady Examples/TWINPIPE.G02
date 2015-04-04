@@ -1,0 +1,129 @@
+Geom Title=Adjusted Ineffective + n Values
+
+River Reach=Spring Creek                    ,Culvrt Reach
+Junct Up Dn=            ,            
+Reach XY= 5 
+         .140665        .8705235        .2748268        .7259475
+         .334873        .5860058        .5727483        .2623907
+        .7413395        .1720117
+Rch Text X Y=0.0762125,0.6355685
+
+Type RM Length L Ch R = 1 ,20.535  ,650,600,500
+Node Desc=River mile 20.535 - Upstream Cross Section
+#Sta/Elev= 8 
+     856    37.5   910.9    34.1   960.4    32.3   975.8    26.5  1005.5    26.5
+  1020.9    32.4  1088.9    34.6  1143.9    38.6
+#Mann= 3 , 0 
+     856      .1       0   960.4     .04       0  1020.9      .1       0
+Bank Sta=960.4,1020.9
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.422  ,650,600,500
+Node Desc=River mile 20.422
+#Sta/Elev= 8 
+     856    36.9   910.9    33.5   960.4    31.7   975.8    25.8  1005.5    25.9
+  1020.9    31.8  1088.9      34  1143.9      38
+#Mann= 3 , 0 
+     856      .1       0   960.4     .04       0  1020.9      .1       0
+Bank Sta=960.4,1020.9
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.308  ,300,300,350
+Node Desc=River mile 20.308
+#Sta/Elev= 8 
+     856    36.4   910.9      33   960.4    31.2   975.8    25.4  1005.5    25.4
+  1020.9    31.3  1088.9    33.5  1143.9    37.5
+#Mann= 3 , 0 
+     856      .1       0   960.4     .04       0  1020.9      .1       0
+Bank Sta=960.4,1020.9
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.251  ,70,70,70
+Node Desc=River mile 20.251
+#Sta/Elev= 8 
+     856    36.1     917    32.7     972    30.9     986    25.1    1013    25.1
+    1027      31    1095    33.2    1150    37.2
+#Mann= 3 , 0 
+     856      .1       0     972     .04       0    1027      .1       0
+Bank Sta=972,1027
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.238  ,57,57,57
+Node Desc=River mile 20.238 - Upstream end of culvert
+#Sta/Elev= 10 
+     856    36.1     917    32.7     972    30.9     986    25.1     993    25.1
+    1007    25.1    1013    25.1    1027      31    1095    33.2    1150    37.2
+#Mann= 3 , 1 
+     856      .4       0     972     .04       0    1027      .4       0
+#XS Ineff= 2 , 0 
+             988    33.7    1012            33.7
+Bank Sta=972,1027
+Exp/Cntr=0.5,0.3
+
+Type RM Length L Ch R = 2 ,20.237  ,,,
+Node Desc=Twin Circular Pipe Crossing
+Bridge Culvert-0,0,1,-1
+Deck Dist Width WeirC Skew NumUp NumDn MinLoCord MaxHiCord MaxSubmerge Is_Ogee
+10,40,2.6,0,8,8,33.7,,0.95,0,2,2,,
+     856     917     972     993    1007    1027    1095    1150
+    36.1    34.8    33.9    33.8    33.8    33.7    35.7    37.2
+                                                                
+     856     917     972     993    1007    1027    1095    1150
+    36.1    34.8    33.9    33.8    33.8    33.7    35.7    37.2
+                                                                
+Multiple Barrel Culv=1,6,,50,0.013,0.5,1,1,1,25.1,25, 2,Culvert # 1 , 0 ,5
+     996     996    1004    1004
+
+Type RM Length L Ch R = 1 ,20.227  ,100,100,100
+Node Desc=River mile 20.227 - Downstream end of culvert
+#Sta/Elev= 10 
+     856    36.1     917    32.7     972    30.9     986      25     993      25
+    1007      25    1013      25    1027      31    1095    33.2    1150    37.2
+#Mann= 3 , 1 
+     856     .06       0     972     .04       0    1027     .06       0
+#XS Ineff= 2 , 0 
+             991      32    1009              32
+Bank Sta=972,1027
+Exp/Cntr=0.5,0.3
+
+Type RM Length L Ch R = 1 ,20.208* ,100,100,100
+Node Desc=River mile 20.208
+#Sta/Elev= 10 
+     856    36.1     917    32.7     972    30.9     986    24.9     993    24.9
+    1007    24.9    1013    24.9    1027      31    1095    33.2    1150    37.2
+#Mann= 3 , 1 
+     856      .1       0     972     .04       0    1027      .1       0
+Bank Sta=972,1027
+Exp/Cntr=0.5,0.3
+
+Type RM Length L Ch R = 1 ,20.189  ,600,500,550
+Node Desc=River mile 20.189
+#Sta/Elev= 8 
+     856    36.1     917    32.7     972    30.9     986    24.8    1013    24.8
+    1027      31    1095    33.2    1150    37.2
+#Mann= 3 , 0 
+     856      .1       0     972     .04       0    1027      .1       0
+Bank Sta=972,1027
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.095  ,500,500,450
+Node Desc=River mile 20.095
+#Sta/Elev= 8 
+     856   35.75   923.1   32.35   983.6   30.55     999   24.25  1028.7   24.45
+  1044.1   30.65  1125.7   32.85  1191.7   36.85
+#Mann= 3 , 0 
+     856      .1       0   983.6     .04       0  1044.1      .1       0
+Bank Sta=983.6,1044.1
+Exp/Cntr=0.3,0.1
+
+Type RM Length L Ch R = 1 ,20.000  ,0,0,0
+Node Desc=River mile 20.000 - Downstream Cross Section
+#Sta/Elev= 8 
+     856    35.3   923.1    31.9   983.6    30.1     999   23.95  1028.7      24
+  1044.1    30.2  1125.7    32.4  1191.7    36.4
+#Mann= 3 , 0 
+     856      .1       0   983.6     .04       0  1044.1      .1       0
+Bank Sta=983.6,1044.1
+Exp/Cntr=0.3,0.1
+
+River Text Location= 0.023094688221709 , 0.965014577259475 

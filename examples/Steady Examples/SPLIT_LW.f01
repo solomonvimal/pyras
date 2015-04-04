@@ -1,0 +1,34 @@
+Flow Title=3 Flow Profiles
+Version=Version 3.0 Beta April 15, 2000
+Number of Profiles= 3 
+Profile Names=PF#1            ,PF 2,PF 3
+River Rch & RM=Spruce Creek,Upper River     ,1278.   
+    1500    5000   15000
+River Rch & RM=Spruce Creek,Middle River    ,978.    
+     300    1500    4000
+River Rch & RM=Spruce Creek,Middle River    ,730.    
+     350    1600    4500
+River Rch & RM=Spruce Creek,Lower River     ,480.    
+    1550    5100   15500
+River Rch & RM=Bryon Creek,Bryon Creek     ,639.    
+    1200    3500   11000
+Boundary for River Rch & Prof#=Spruce Creek,Middle River    , 1 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Bryon Creek,Bryon Creek     , 1 
+Up Type= 0 
+Dn Type= 0 
+Boundary for River Rch & Prof#=Spruce Creek,Lower River     , 1 
+Up Type= 0 
+Dn Type= 3 
+Dn Slope=.001
+Gate Openings=Spruce Creek    ,Upper River     ,1150    ,Gate #1         ,
+       3       3       5       3       5       3
+DSS Import StartDate=
+DSS Import StartTime=
+DSS Import EndDate=
+DSS Import EndTime=
+DSS Import GetInterval= 0 
+DSS Import Interval=
+DSS Import GetPeak= 0 
+DSS Import FillOption= 0 

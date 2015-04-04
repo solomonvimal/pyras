@@ -1,0 +1,74 @@
+Plan Title=Method 1 Encroachment
+Short Identifier=Method 1    
+Geom File=g01
+Flow File=f01
+Interactive Comp Mode
+Subcritical Flow
+K Sum by GR= 0 
+Std Step Tol= 0.01 
+Critical Tol= 0.01 
+Num of Std Step Trials= 20 
+Max Error Tol= 0.3 
+Flow Tol Ratio= 0.001 
+Log Output Level= 0 
+Friction Slope Method= 1 
+Calc Critical at every XS
+Parabolic Critical Depth
+Global Vel Dist= 0 , 0 , 0 
+Global Log Level= 0 
+Encroach Param=-1 ,10,10, 2 
+Encroach River=Beaver Creek    
+Encroach Reach=Beaver Creek    
+Encroach Node=5.99    
+       4      .7        
+Encroach Node=5.875*  
+       4       1        
+Encroach Node=5.76    
+       4     1.1        
+Encroach Node=5.685*  
+       4     1.6        
+Encroach Node=5.61    
+       4       2        
+Encroach Node=5.49*   
+       4       2        
+Encroach Node=5.41    
+       4       1        
+Encroach Node=5.4     
+       4       1        
+Encroach Node=5.39    
+       4       1        
+Encroach Node=5.24*   
+       4     .88        
+Encroach Node=5.13    
+       4      .8        
+Encroach Node=5.065*  
+       4      .9        
+Encroach Node=5.0     
+       4     .95        
+Encroach Reach=Kentwood        
+Encroach Node=5.99    
+       1     233 1118.42
+Encroach Node=5.875*  
+       1  327.07 1255.65
+Encroach Node=5.76    
+       1     341 1188.98
+Encroach Node=5.685*  
+       1  464.82  1254.2
+Encroach Node=5.61    
+       1   609.6 1317.22
+Encroach Node=5.49*   
+       1  477.33  1230.1
+Encroach Node=5.41    
+       1     440  1057.7
+Encroach Node=5.4     
+       1     440  1057.7
+Encroach Node=5.39    
+       1     440  1057.7
+Encroach Node=5.24*   
+       1  182.33   863.2
+Encroach Node=5.13    
+       1     145  740.57
+Encroach Node=5.065*  
+       1   264.5  938.65
+Encroach Node=5.0     
+       1     384 1296.57

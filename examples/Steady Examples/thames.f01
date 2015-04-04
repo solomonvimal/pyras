@@ -1,0 +1,18 @@
+Flow Title=Estimated Thames River Flow
+Number of Profiles= 1 
+Profile Names=PF#1
+River Rch & RM=Thames River,Ice Jam Section ,42000   
+     261
+Boundary for River Rch & Prof#=Thames River,Ice Jam Section , 1 
+Up Type= 0 
+Dn Type= 1 
+Dn Known WS=177.64
+Observed WS=Thames River    ,Ice Jam Section ,42000   , 0 ,180.08
+Observed WS=Thames River    ,Ice Jam Section ,41590   , 0 ,180.21
+Observed WS=Thames River    ,Ice Jam Section ,40180   , 0 ,179.92
+Observed WS=Thames River    ,Ice Jam Section ,39190   , 0 ,179.78
+Observed WS=Thames River    ,Ice Jam Section ,35820   , 0 ,179.29
+Observed WS=Thames River    ,Ice Jam Section ,33490   , 0 ,178.69
+Observed WS=Thames River    ,Ice Jam Section ,32740   , 0 ,178.48
+Observed WS=Thames River    ,Ice Jam Section ,32310   , 0 ,177.91
+Observed WS=Thames River    ,Ice Jam Section ,32200   , 0 ,177.64

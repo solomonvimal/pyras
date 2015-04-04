@@ -1,0 +1,9 @@
+Flow Title=100-Year Discharge
+Number of Flows and Profiles and Boundary= 1, 1, 1
+Rch & RM=Pine Creek  ,10.90   
+   30000
+Boundary for Rch & Prof#=Pine Creek  , 1
+Up Type= 0
+Up Value=0
+Dn Type= 3
+Dn Value=0.002
