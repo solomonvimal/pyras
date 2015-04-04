@@ -8,20 +8,39 @@ import raspy
 project = r'examples\Steady Examples\BEAVCREK.p01'
 rc = raspy.HECRASController()
 
-rc.show_ras()
+rc.ShowRas()
 
 # %% Project
-rc.project_open(project)
+rc.Project_Open(project)
 
-res = rc.project_current()
-print(res)
+res = rc.Project_Current()
+print('Project_Current', res)
 
 #res = rc.Compute_Complete()
 #print('ComputeComplete', res)
 
+# %% Curent
+res = rc.CurrentGeomFile()
+print('CurrentGeomFile', res)
+
+res = rc.CurrentPlanFile()
+print('CurrentPlanFile', res)
+
+res = rc.CurrentProjectFile()
+print('CurrentProjectFile', res)
+
+res = rc.CurrentProjectTitle()
+print('CurrentProjectTitle', res)
+
+res = rc.CurrentSteadyFile()
+print('CurrentSteadyFile', res)
+
+res = rc.CurrentUnSteadyFile()
+print('CurrentUnSteadyFile', res)
+
 # %% Geometry (Geometry Class)
 
-geo = rc.geometry()
+geo = rc.Geometry()
 
 res = geo.RiverIndex('Beaver Creek')
 print('RiverIndex', res)
@@ -69,20 +88,20 @@ print('NodeCType', res)
 #res = rc.geometry_get_gate_names()
 #print(res)
 
-#res = rc.geometry_get_gml()
-#print(res)
+#res = rc.Geometry_GetGML()
+#print('Geometry_GetGML', res)
 
-#res = rc.geometry_get_rivers()
-#print(res)
-#
-#res = rc.geometry_get_node(1, 1, '5.39')
-#print(res)
-#
-#res = rc.geometry_get_nodes(1, 1)
-#print(res)
-#
-#res = rc.geometry_get_reaches(1)
-#print(res)
+#res = rc.Geometry_GetRivers()
+#print('Geometry_GetRivers', res)
+
+res = rc.Geometry_GetNode(1, 1, '5.39')
+print('Geometry_GetNode', res)
+
+res = rc.Geometry_GetNodes(1, 1)
+print('Geometry_GetNodes', res)
+
+#res = rc.Geometry_GetReaches(1)
+#print('Geometry_GetReaches', res)
 
 # %% Get (Controller Class)
 res = rc.GetRASVersion()

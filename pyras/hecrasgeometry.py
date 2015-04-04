@@ -28,7 +28,7 @@ class HECRASGeometry(object):
         geo = self._geometry
         res = geo.nNode(riv, rch)
 
-        n, river, reach = res
+        n, riv, rch = res
 
         return n
 
@@ -60,7 +60,7 @@ class HECRASGeometry(object):
         """
         geo = self._geometry
         res = geo.NodeCType(riv, rch, n)
-        node_type, river_id, reach_id, node_id = res
+        node_type, riv, rch, n = res
         return node_type
 
     def NodeCutLine_nPoints(self, riv, rch, n):

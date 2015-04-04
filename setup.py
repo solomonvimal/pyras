@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
-from .raspy import __version__
+from .pyras import __version__
 
 
 def readme():
@@ -11,7 +11,7 @@ def readme():
 install_requires = ['pywin32']
 
 setup(
-    name='raspy',
+    name='pyras',
     version=__version__,
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     keywords=["HEC-RAS HEC RAS controller windows"],

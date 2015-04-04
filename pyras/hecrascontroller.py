@@ -72,27 +72,75 @@ class HECRASController(object):
     # %% Current
     def CurrentGeomFile(self):
         """
+        Indicates the current HEC-RAS geometry file and its path.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentGeomFile()
+        return res
 
     def CurrentPlanFile(self):
         """
+        Indicates the current HEC-RAS plan file and its path.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentPlanFile()
+        return res
 
     def CurrentProjectFile(self):
         """
+        Indicates the current HEC-RAS project file and its path.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentProjectFile()
+        return res
 
     def CurrentProjectTitle(self):
         """
+        Indicates the current HEC-RAS project title.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentProjectTitle()
+        return res
 
     def CurrentSteadyFile(self):
         """
+        Indicates the current HEC-RAS steady flow file and its path.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentSteadyFile()
+        return res
 
     def CurrentUnSteadyFile(self):
         """
+        Indicates the current HEC-RAS unstead flow file and its path.
+
+        Returns
+        -------
+        str
         """
+        rc = self._rc
+        res = rc.CurrentUnSteadyFile()
+        return res
 
     # %% Edit
     def Edit_AddBC(self):
@@ -142,22 +190,27 @@ class HECRASController(object):
     def Edit_SedimentData(self):
         """
         """
+        rc = self._rc
 
     def Edit_SteadyFlowData(self):
         """
         """
+        rc = self._rc
 
     def Edit_UnsteadyFlowData(self):
         """
         """
+        rc = self._rc
 
     def Edit_WaterQualityData(self):
         """
         """
+        rc = self._rc
 
     def Edit_XS(self):
         """
         """
+        rc = self._rc
 
     # %% Export
     def ExportGIS(self):
@@ -237,56 +290,62 @@ class HECRASController(object):
 
         return rc.Geometry_GetGML()
 
-    def Geometry_GetNode(self, river_id, reach_id, station):
+    def Geometry_GetNode(self, riv, rch, rs):
         """Returns the node ID of a selected node.
 
         Parameters
         ----------
-        river_id : int
-            TODO:
-        reach_id : int
-            TODO:
-        station : str
-            TODO:
+        riv : int
+            The river ID of the node.
+        rch : int
+            The reach ID of the node.
+        rs : str
+            The river station of the node.
 
         Notes
         -----
+        Node can be any geometric component with a River Station (i.e. cross
+        section, bridge/culvert, inline structure, lateral structure, multiple
+        opening).
         """
         rc = self._rc
-        res = rc.Geometry_GetNode(river_id, reach_id, station)
-        node_id, river_id, reach_id, station = res
+        res = rc.Geometry_GetNode(riv, rch, rs)
+        node_id, riv, rch, rs = res
 
         if node_id == 0:
             node_id = None
 
         return node_id
 
-    def Geometry_GetNodes(self, river_id, reach_id):
+    def Geometry_GetNodes(self, riv, rch):
         """
-        Returns a dictionary of nodes and node types in a specified river id
-        reach id.
+        Returns a tuple of nodes and node types in a specified river and reach.
 
         Parameters
         ----------
-        river_id : str
-            TODO:
-        reach_id : str
-            TODO:
+        riv : int
+            The river ID.
+        rch : int
+            The reach ID.
 
         Returns
         -------
-        dict or None
-            TODO:
+        rs : tuple of str
+            The tuple of river stations representing nodes on the selected
+            river/reach.
+        NodeType : tuple str
+            The tuple of node types on the selected
+            river/reach.
         """
         rc = self._rc
-        res = rc.Geometry_GetNodes(river_id, reach_id)
-        river_id, reach_id, node_count, river_stations, node_types = res
+        geo = self.Geometry()
+        nRS = geo.nNode(riv, rch)
+        rs = (float('nan'),)*(nRS + 1)
+        NodeType = (float('nan'),)*(nRS + 1)
+        res = rc.Geometry_GetNodes(riv, rch, nRS, rs, NodeType)
+        riv, rch, nRS, rs, NodeType = res
 
-        if river_stations is not None and node_types is not None:
-            result = dict(zip(river_stations, node_types))
-        else:
-            result = None
-        return result
+        return rs, NodeType
 
     def Geometry_GetReaches(self, river_id):
         """
@@ -315,7 +374,7 @@ class HECRASController(object):
     def Geometry_GetRivers(self):
         """Returns a list of rivers names."""
         rc = self._rc
-        res = rc.Geometry_GetRivers()
+        res = rc.Geometry_GetRivers(None)
         river_count, river_names = res
 
         if river_names is not None:
