@@ -2,11 +2,11 @@
 """
 
 """
-import raspy
+import pyras
 
 
 project = r'examples\Steady Examples\BEAVCREK.p01'
-rc = raspy.HECRASController()
+rc = pyras.HECRASController()
 
 rc.ShowRas()
 
