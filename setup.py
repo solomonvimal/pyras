@@ -2,14 +2,23 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
-from .pyras import __version__
+
+# To avoid importing the module
+def read_version():
+    with open("pyras/__init__.py") as f:
+        lines = f.read().splitlines()
+        for l in lines:
+            if "__version__" in l:
+                return l.split("=")[1].strip().replace("'", '').replace('"', '')
 
 
 def readme():
     return str(open('README.rst').read())
 
+	
 # Check that pywin32 is installed otherwise raise error.
 install_requires = []
+
 
 setup(
     name='pyras',

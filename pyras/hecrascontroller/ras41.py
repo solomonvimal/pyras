@@ -1489,16 +1489,31 @@ class Controller(object):
 
         Notes
         -----
-        All array paraeters are 0-based for this method and must be
+        All array parameters are 0-based for this method and must be
         redimensioned.
+
+        Python:  0-based is handled, so the user does not need to account for.
         """
         rc = self._rc
-        res = rc.Schematic_ReachPoints()
+        geo = self.Geometry()
+        # FIXME:
+        n_rivers = geo.nRiver()
+        n_reaches = self.Schematic_ReachCount()
+        n_points = self.Schematic_ReachPointCount()
+        RiverName_0 = ('',)*(n_rivers)
+        ReachName_0 = ('',)*(n_reaches)
+        ReachStartIndex_0 = (0,)*(n_reaches)
+        ReachPointCount_0 = (0,)*(n_reaches)
+        ReachPointX_0 = (0.0,)*(n_points)
+        ReachPointY_0 = (0.0,)*(n_points)
+
+        res = rc.Schematic_ReachPoints(RiverName_0, ReachName_0,
+                                       ReachStartIndex_0, ReachPointCount_0,
+                                       ReachPointX_0, ReachPointY_0)
         (RiverName_0, ReachName_0, ReachStartIndex_0, ReachPointCount_0,
          ReachPointX_0, ReachPointY_0) = res
 
-        return (RiverName_0, ReachName_0, ReachStartIndex_0,
-                ReachPointCount_0, ReachPointX_0, ReachPointY_0)
+        return res
 
     def Schematic_XSCount(self):
         """
@@ -1551,13 +1566,23 @@ class Controller(object):
 
         Notes
         -----
-        All array paraeters are 0-based for this method and must be
+        All array parameters are 0-based for this method and must be
         redimensioned.
         """
         rc = self._rc
-        res = rc.Schematic_XSPoints()
+        n = 200
+        RSName_0 = ('',)*(n)
+        ReachIndex_0 = (0,)*(n)
+        XSStartIndex_0 = (0,)*(n)
+        XSPointCount_0 = (0,)*(n)
+        XSPointX_0 = (0.0,)*(n)
+        XSPointY_0 = (0.0,)*(n)
+        res = rc.Schematic_XSPoints(RSName_0, ReachIndex_0, XSStartIndex_0,
+                                    XSPointCount_0, XSPointX_0, XSPointY_0)
         (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
          XSPointX_0, XSPointY_0) = res
+
+        print(res)
 
         return (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
                 XSPointX_0, XSPointY_0)

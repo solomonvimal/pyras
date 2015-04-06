@@ -147,8 +147,8 @@ print('Geometry_SetMann_LChR', res)
 res = rc.Geometry_SetSAArea('test', 1200)
 print('Geometry_SetSAArea', res)
 
-rc.Edit_GeometricData()
-print('Edit_GeometricData')
+#rc.Edit_GeometricData()
+#print('Edit_GeometricData')
 
 # %% Get (Controller Class)
 res = rc.GetRASVersion()
@@ -160,6 +160,21 @@ print('HECRASVersion', res)
 # %% Schematic (Controller Class)
 res = rc.Schematic_ReachCount()
 print('Schematic_ReachCount', res)
+
+res = rc.Schematic_ReachPointCount()
+print('Schematic_ReachPointCount', res)
+
+res = rc.Schematic_ReachPoints()
+print('Schematic_ReachPoints', res)
+
+res = rc.Schematic_XSCount()
+print('Schematic_XSCount', res)
+
+res = rc.Schematic_XSPointCount()
+print('Schematic_XSPointCount', res)
+
+res = rc.Schematic_XSPoints()
+print('Schematic_XSPointCount', res)
 
 rc.close()
 pyras.kill_all()
