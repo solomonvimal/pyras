@@ -53,6 +53,34 @@ class Runtime(object):
         """ """
         self._pause(window_text='Lateral Structure Editor')
 
+    def pause_multiple(self):
+        """ """
+        self._pause(window_text='Run Multiple Plans')
+
+    def pause_plan(self):
+        """ """
+        self._pause(window_text='Steady Flow Analysis')
+
+    def pause_quasi(self):
+        """ """
+        self._pause(window_text='Quasi Unsteady Flow Editor')
+
+    def pause_sediment(self):
+        """ """
+        self._pause(window_text='Sediment Data')
+
+    def pause_steady(self):
+        """ """
+        self._pause(window_text='Steady Flow Data')
+
+    def pause_unsteady(self):
+        """ """
+        self._pause(window_text='Unsteady Flow Data')
+
+    def pause_quality(self):
+        """ """
+        self._pause(window_text='Water Quality Data')
+
     def pause_xs(self):
         """ """
         self._pause(window_text='Cross Section Data')

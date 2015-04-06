@@ -427,6 +427,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_MultipleRun()
+        self._runtime.pause_multiple()
 
     def Edit_PlanData(self):
         """
@@ -442,6 +443,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_PlanData()
+        self._runtime.pause_plan()
 
     def Edit_QuasiUnsteadyFlowData(self):
         """
@@ -456,6 +458,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_QuasiUnsteadyFlowData()
+        self._runtime.pause_quasi()
 
     def Edit_SedimentData(self):
         """
@@ -470,6 +473,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_SedimentData()
+        self._runtime.pause_sediment()
 
     def Edit_SteadyFlowData(self):
         """
@@ -484,6 +488,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_SteadyFlowData()
+        self._runtime.pause_steady()
 
     def Edit_UnsteadyFlowData(self):
         """
@@ -498,6 +503,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_UnsteadyFlowData()
+        self._runtime.pause_unsteady()
 
     def Edit_WaterQualityData(self):
         """
@@ -512,6 +518,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_WaterQualityData()
+        self._runtime.pause_quality()
 
     def Edit_XS(self, river, reach, rs):
         """

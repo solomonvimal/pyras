@@ -19,9 +19,17 @@ PyRAS - Python River Analysis System
 Description
 -----------
 
-A Python Wrapper for the for the COM interface of the HEC-RAS controller.
-This package only runs on windows.
+A Python suite for working with river models. Offers an abstraction layer for 
+the definition of river models and tools to call controller of different
+models.
 
+Models supported:
+
+* **HEC-RAS**: Wrapper for the COM interface of the HEC-RAS controller. 
+(windows only)
+
+* **HEC-RAS API**: High level parser API of HEC-RAS input files.
+(Cross platform)
 
 Requirements
 ------------
@@ -40,7 +48,7 @@ The following would be the eventual way of installing (not working right now):
 
 1. Install the anaconda distribution 
 
-1. On the command line type:
+2. On the command line type:
 
 .. code-block:: python
 
@@ -49,9 +57,9 @@ The following would be the eventual way of installing (not working right now):
 **The hard way:**
 1. Install python
 
-1. Download pywin32 installer from the `project webpage`_  and install.
+2. Download pywin32 installer from the `project webpage`_  and install.
 
-1. On the command line type:
+3. On the command line type:
 
 .. code-block:: python
 

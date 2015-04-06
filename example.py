@@ -104,10 +104,29 @@ print('CurrentUnSteadyFile', res)
 #res = rc.Edit_LW('Beaver Creek', 'Kentwood', '5.99')
 #print('Edit_LW', res)
 #
+#res = rc.Edit_MultipleRun()
+#print('Edit_MultipleRun', res)
+#
+#res = rc.Edit_PlanData()
+#print('Edit_PlanData', res)
+#
+#res = rc.Edit_QuasiUnsteadyFlowData()
+#print('Edit_QuasiUnsteadyFlowData', res)
+#
+#res = rc.Edit_SedimentData()
+#print('Edit_SedimentData', res)
+#
+#res = rc.Edit_SteadyFlowData()
+#print('Edit_SteadyFlowData', res)
+#
+#res = rc.Edit_UnsteadyFlowData()
+#print('Edit_UnsteadyFlowData', res)
+#
+#res = rc.Edit_WaterQualityData()
+#print('Edit_WaterQualityData', res)
+#
 #res = rc.Edit_XS('Beaver Creek', 'Kentwood', '5.99')
 #print('Edit_XS', res)
-#
-
 
 # %% Geometry (Controller Class)
 
@@ -120,8 +139,8 @@ print('CurrentUnSteadyFile', res)
 #print('Geometry_GetGateNames', res)
 
 # Not working
-res = rc.Geometry_GetGML('Bvr.Cr.+Bridge - P/W: New Le, Lc')
-print('Geometry_GetGML', res)
+#res = rc.Geometry_GetGML('Bvr.Cr.+Bridge - P/W: New Le, Lc')
+#print('Geometry_GetGML', res)
 
 res = rc.Geometry_GetNode(1, 1, '5.39')
 print('Geometry_GetNode', res)
@@ -138,7 +157,6 @@ print('Geometry_GetRivers', res)
 res = rc.Geometry_SetMann('Beaver Creek', 'Kentwood', '5.99',
                           3, (0.12, 0.13, 0.14), (5, 36, 131))
 print('Geometry_SetMann', res)
-
 
 res = rc.Geometry_SetMann_LChR('Beaver Creek', 'Kentwood', '5.99', 0.15, 0.10,
                                0.16)
