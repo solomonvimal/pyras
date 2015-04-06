@@ -23,13 +23,11 @@ A Python suite for working with river models. Offers an abstraction layer for
 the definition of river models and tools to call controller of different
 models.
 
-Models supported:
+**Models supported:**
 
-* **HEC-RAS**: Wrapper for the COM interface of the HEC-RAS controller. 
-(windows only)
+* **HEC-RAS**: Wrapper for the COM interface of the HEC-RAS controller. (windows only)
 
-* **HEC-RAS API**: High level parser API of HEC-RAS input files.
-(Cross platform)
+* **HEC-RAS API**: High level parser API of HEC-RAS input files. (Cross platform)
 
 Requirements
 ------------
@@ -46,7 +44,9 @@ The following would be the eventual way of installing (not working right now):
 
 **The easy way:**
 
+
 1. Install the anaconda distribution 
+
 
 2. On the command line type:
 
