@@ -1570,22 +1570,20 @@ class Controller(object):
         redimensioned.
         """
         rc = self._rc
-        n = 200
-        RSName_0 = ('',)*(n)
-        ReachIndex_0 = (0,)*(n)
-        XSStartIndex_0 = (0,)*(n)
-        XSPointCount_0 = (0,)*(n)
-        XSPointX_0 = (0.0,)*(n)
-        XSPointY_0 = (0.0,)*(n)
+        n_xs = self.Schematic_XSCount()
+        n_points = self.Schematic_XSPointCount()
+        RSName_0 = ('',)*(n_xs)
+        ReachIndex_0 = (-1,)*(n_xs)
+        XSStartIndex_0 = (-1,)*(n_xs)
+        XSPointCount_0 = (-1,)*(n_xs)
+        XSPointX_0 = (float('nan'),)*(n_points)
+        XSPointY_0 = (float('nan'),)*(n_points)
         res = rc.Schematic_XSPoints(RSName_0, ReachIndex_0, XSStartIndex_0,
                                     XSPointCount_0, XSPointX_0, XSPointY_0)
         (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
          XSPointX_0, XSPointY_0) = res
 
-        print(res)
-
-        return (RSName_0, ReachIndex_0, XSStartIndex_0, XSPointCount_0,
-                XSPointX_0, XSPointY_0)
+        return res
 
     # %% Set TODO:
     def SetDataLocations(self, PlanTitle, count, LocationDesciptions, DSSFiles,

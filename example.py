@@ -147,8 +147,8 @@ print('Geometry_SetMann_LChR', res)
 res = rc.Geometry_SetSAArea('test', 1200)
 print('Geometry_SetSAArea', res)
 
-rc.Edit_GeometricData()
-print('Edit_GeometricData')
+#rc.Edit_GeometricData()
+#print('Edit_GeometricData')
 
 # %% Get (Controller Class)
 res = rc.GetRASVersion()
