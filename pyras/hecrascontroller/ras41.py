@@ -353,6 +353,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_BC(river, reach, rs)
+        self._runtime.pause_bc()
 
     def Edit_GeometricData(self):
         """
@@ -365,6 +366,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_GeometricData()
+        self._runtime.pause_geo()
 
     def Edit_IW(self, river, reach, rs):
         """
@@ -387,6 +389,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_LW(river, reach, rs)
+        self._runtime.pause_iw()
 
     def Edit_LW(self, river, reach, rs):
         """
@@ -409,6 +412,7 @@ class Controller(object):
         """
         rc = self._rc
         rc.Edit_LW(river, reach, rs)
+        self._runtime.pause_lw()
 
     def Edit_MultipleRun(self):
         """
@@ -529,6 +533,7 @@ class Controller(object):
         """
         rc = self._rc
         res = rc.Edit_XS(river, reach, rs)
+        self._runtime.pause_xs()
 
     # %% Export
     def ExportGIS(self):
@@ -593,9 +598,18 @@ class Controller(object):
         """
         rc = self._rc
         res = rc.Geometry_GetGateNames(river, reach, station)
-        river, reach, station, ngate, gate_names = res
+        river, reach, station, ngate, GateNames, errmsg = res
 
-        return list(gate_names)
+        # Return an empty list or return None?
+        if GateNames is None:
+            GateNames = []
+
+        result = (ngate, list(GateNames))
+
+        if errmsg != '':
+            raise Exception(errmsg)
+
+        return result
 
     def Geometry_GetGML(self, geomfilename):
         """Returns the GML file txt for the current geometry file.
@@ -605,9 +619,10 @@ class Controller(object):
         geomfilename : str
             The name of the geometry file.
         """
+        # FIXME: Not working
         rc = self._rc
-
-        return rc.Geometry_GetGML()
+        res = rc.Geometry_GetGML(geomfilename)
+        return 
 
     def Geometry_GetNode(self, riv, rch, rs):
         """Returns the node ID of a selected node.
@@ -627,6 +642,14 @@ class Controller(object):
         section, bridge/culvert, inline structure, lateral structure, multiple
         opening).
         """
+        # Input check
+        if not isinstance(riv, int) or riv <= 0:
+            raise Exception
+        if not isinstance(rch, int) or rch <= 0:
+            raise Exception
+        if not isinstance(rs, str):
+            raise Exception
+
         rc = self._rc
         res = rc.Geometry_GetNode(riv, rch, rs)
         node_id, riv, rch, rs = res
@@ -672,7 +695,7 @@ class Controller(object):
 
         Parameters
         ----------
-        riv : str
+        riv : int
             The river ID.
 
         Returns
@@ -682,9 +705,18 @@ class Controller(object):
         reach : str
             The names of the reaches on the selected river
         """
+        # Input check
+        if not isinstance(riv, int):
+            raise Exception
+
+        nReach, reach = 0, tuple()
         rc = self._rc
-        res = rc.Geometry_GetReaches(riv)
+        res = rc.Geometry_GetReaches(riv, nReach, reach)
         riv, nReach, reach = res
+
+        # Return an empty list or return None?
+        if reach is None:
+            reach = []
 
         result = (nReach, list(reach))
 
@@ -702,7 +734,8 @@ class Controller(object):
             The list of the names of the rivers.
             """
         rc = self._rc
-        res = rc.Geometry_GetRivers(None)
+        nRiver, river = 0, tuple()
+        res = rc.Geometry_GetRivers(nRiver, river)
         nRiver, river = res
 
         if river is not None:
@@ -726,21 +759,34 @@ class Controller(object):
             The river station of the cross section to set Manning's n values.
         nMann : int
             The number of Manning's n values to add.
-        Mann_n : list of float
+        Mann_n : list/tuple of float
             A list of the Manning's n values to add.
-        Station : list of float
+        Station : list/tuple of float
             A list of the stationing values of the Manning's n breakpoints.
 
         Notes
         -----
         If station values don't exist in the station elevation table,
         HECRASCntroller will use the closest station to apply the n value to.
+
+        Python: This method takes care of 0-based indexing.
         """
         rc = self._rc
         errmsg = ''
+
+        # Adjust to 0-based indexing and force the use of tuples
+        Mann_n = tuple([0] + list(Mann_n))
+        Station = tuple([0] + list(Station))
+
         res = rc.Geometry_SetMann(river, reach, rs, nMann, Mann_n, Station,
                                   errmsg)
-        return res
+
+        flag, river, reach, rs, nMann, Mann_n, Station, errmsg = res
+
+        if errmsg != '':
+            raise Exception(errmsg)
+
+        return flag
 
     def Geometry_SetMann_LChR(self, river, reach, rs, MannLOB, MannChan,
                               MannROB):
@@ -785,11 +831,18 @@ class Controller(object):
         The Geometry_SetSAArea method works in runtime, sets the area, and
         returns a True value. But, you must ShowRAS and then save the geometry.
         Otherwise changes to SA area are not saved. Also, make sure to NOT
-        close RAS during run time.
+        close RAS during run time. The area ust already exists!
+
+        Python: this method handles the save automatically.
         """
+        # TODO: using the parsed filed, look for valid areas and check
+        # against this
         rc = self._rc
         errmsg = ''
         res = rc.Geometry_SetSAArea(SAName, Area, errmsg)
+        geo = self.Geometry()
+        geo.Save()
+
         return res
 
     # %% Get

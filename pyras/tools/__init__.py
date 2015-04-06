@@ -1,7 +1,37 @@
 # Copyright (c) 1996-2008, Greg Stein and Mark Hammond.
 
+import os
+
 import win32api
 import win32con
+
+
+from runtime import Runtime
+
+
+def get_available_versions():
+    """ """
+    ver = {'HEC-RAS\\4.1.0\\ras.exe': 'RAS41',
+           'HEC-RAS\\5.0 Beta 2014-10-01\\ras.exe': 'RAS500'}
+
+    ldic = get_registered_typelibs()
+
+    # Check if files actually exist (another sanity check)
+    available_versions = []
+
+    for dic in ldic:
+        fname = dic['filename']
+        if os.path.isfile(fname):
+            for k in ver:
+                if k in fname:
+                    available_versions.append(ver[k])
+    return available_versions
+
+
+def get_supported_versions():
+    """ """
+    # Order is important as it gives the priority
+    return ['RAS500', 'RAS41']
 
 
 def get_typelib_info(keyid, version):
@@ -54,7 +84,7 @@ def get_typelib_info(keyid, version):
         finally:
             win32api.RegCloseKey(key)
 
-        return fname
+        return fname, lcid
 
 
 def get_registered_typelibs(match='HEC River Analysis System'):
@@ -91,8 +121,17 @@ def get_registered_typelibs(match='HEC River Analysis System'):
             finally:
                 win32api.RegCloseKey(sub_key)
             if name is not None and match in name:
-                fname = get_typelib_info(key_name, version_str)
-                result.append((name, version_str, key_name, fname))
+                fname, lcid = get_typelib_info(key_name, version_str)
+
+                # Split version
+                major, minor = version_str.split('.')
+
+                result.append({'name': name,
+                               'filename': fname,
+                               'iid': key_name,
+                               'lcid': lcid,
+                               'major': int(major),
+                               'minor': int(minor)})
             num = num + 1
     finally:
         win32api.RegCloseKey(key)

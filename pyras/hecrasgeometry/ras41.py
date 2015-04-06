@@ -103,8 +103,8 @@ class Geometry(object):
         """
         # FIXME:
         n = self.NodeCutLine_nPoints(riv, rch, n)
-        x = (float('nan'),)*(n + 1)
-        y = (float('nan'),)*(n + 1)
+        x = (float('nan'),)*(n + 1)  # (n + 1) Adjust to 0-based indexing
+        y = (float('nan'),)*(n + 1)  # (n + 1) Adjust to 0-based indexing
         geo = self._geometry
         res = geo.NodeCutLine_Points(riv, rch, n, x, y)
         river_id, reach_id, node_id, point_x, point_y = res
@@ -271,8 +271,8 @@ class Geometry(object):
             Y coordinates of invert in reach
         """
         n = self.ReachInvert_nPoints(riv, rch)
-        x = (float('nan'),)*(n + 1)
-        y = (float('nan'),)*(n + 1)
+        x = (float('nan'),)*(n + 1)  # (n + 1) Adjust to 0-based indexing
+        y = (float('nan'),)*(n + 1)  # (n + 1) Adjust to 0-based indexing
         geo = self._geometry
         res = geo.ReachInvert_Points(riv, rch, x, y)
 

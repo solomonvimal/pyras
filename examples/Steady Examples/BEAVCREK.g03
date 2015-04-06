@@ -1,5 +1,5 @@
 Geom Title=Bvr.Cr.+Bridge - P/W: New Le, Lc
-Program Version=4.00
+Program Version=4.10
 Viewing Rectangle=-0.0381 , 0.9173 , 1.0901 ,-0.172 
 
 River Reach=Beaver Creek    ,Kentwood        
@@ -18,7 +18,7 @@ XS GIS Cut Line=5
 0.24999490028474 1.07770670246570.123629745878360.94090304741025
        0.1176471       0.93442620.111664454121640.92794935258975
 -0.02870884673160.77598039628104
-Node Last Edited Time=Apr/15/1997 12:08:42
+Node Last Edited Time=Apr/06/2015 16:31:49
 #Sta/Elev= 35 
        0     221       7   220.3      36   216.6     131   216.6     233   216.8
      282   216.6     351   216.4     518   216.1     591   213.3     627   213.2
@@ -27,9 +27,8 @@ Node Last Edited Time=Apr/15/1997 12:08:42
      899   210.2     932   209.9     948   216.6    1011   218.1    1063   218.7
     1093   219.1    1198   218.5    1283   218.2    1542   218.4    1565   218.1
     1772   218.1    1791   218.4    1831   218.9    1887   220.4    1910   220.8
-#Mann= 4 , 1 , 0 
-       0      .1       0     518     .14       0     866     .04       0
-     948     .14       0
+#Mann= 3 ,-1 , 0 
+       0     .15       0     866      .1       0     948     .16       0
 Levee=-1,866,214.8,0,,,,
 Bank Sta=866,948
 XS Rating Curve= 0 ,0
@@ -426,6 +425,19 @@ Bank Sta=394,518
 XS Rating Curve= 0 ,0
 Exp/Cntr=0.3,0.1
 
+Storage Area=test            ,-0.2859597,0.3877383
+Storage Area Surface Line= 5 
+-0.4444583916083 0.4869986013986                
+-0.39150314685310.23399020979021                
+-0.15320454545450.26635174825175                
+-0.15614650349650.53701188811189                
+-0.44740034965030.48405664335664                
+Storage Area Type= 0 
+Storage Area Area=1200
+Storage Area Min Elev=
+Storage Area Vol Elev= 1 
+               0
+
 Chan Stop Cuts=-1 
 
 
@@ -433,3 +445,5 @@ Chan Stop Cuts=-1
 Use User Specified Reach Order=0
 User Specified Reach Order=Beaver Creek    ,Kentwood        
 GIS Ratio Cuts To Invert=-1
+GIS Limit At Bridges=0
+Composite Channel Slope=5
