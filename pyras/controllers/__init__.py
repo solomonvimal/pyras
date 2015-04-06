@@ -1,3 +1,1 @@
-import hecras.hecrascontroller
-
-HECRASController = hecras.hecrascontroller.HECRASController
+from . import hecras

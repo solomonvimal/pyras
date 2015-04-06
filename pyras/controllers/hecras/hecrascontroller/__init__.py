@@ -3,14 +3,15 @@ import os
 import win32com.client
 
 from .. import hecrasgeometry
-from .... import tools
+from .. import get_supported_versions
+from ..runtime import Runtime
 
 
 def HECRASController(ras_version=None):
     """ """
     if ras_version is None:
         ras_version = os.environ['RAS_CONTROLLER_VERSION']
-    elif ras_version not in tools.get_supported_versions():
+    elif ras_version not in get_supported_versions():
         error = 'ras_version "{}" not supported.'.format(ras_version)
         raise Exception(error)
 
@@ -28,7 +29,7 @@ def HECRASController(ras_version=None):
                 self._ras_version)
 
             self._geometry = hecrasgeometry.HECRASGeometry(ras_version)
-            self._runtime = tools.Runtime(self)
+            self._runtime = Runtime(self)
 
         def runtime(self):
             """ """
