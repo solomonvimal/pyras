@@ -44,9 +44,7 @@ The following would be the eventual way of installing (not working right now):
 
 **The easy way:**
 
-
 1. Install the anaconda distribution 
-
 
 2. On the command line type:
 
@@ -55,6 +53,7 @@ The following would be the eventual way of installing (not working right now):
 	pip install pyras
 
 **The hard way:**
+
 1. Install python
 
 2. Download pywin32 installer from the `project webpage`_  and install.
@@ -64,7 +63,6 @@ The following would be the eventual way of installing (not working right now):
 .. code-block:: python
 
 	pip install pyras
-
 
 	
 License
@@ -78,6 +76,6 @@ Status
 This is a project under development and is currently in beta testing.
 
 Although the project should be compatible with python versions 2.6, 2.7, 3.1,
-3.2, 3.4 and 3.5, the project will only provide testing for 2.7, 3.3 and 3.4
+3.2, 3.3 and 3.4, the project will only provide testing for 2.7, 3.3 and 3.4
 
-project webpage
+.. _project webpage: http://sourceforge.net/projects/pywin32/files/
