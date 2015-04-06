@@ -32,9 +32,8 @@ class Runtime(object):
                 return None
 
         win32gui.EnumWindows(enumHandler, None)
-
         _, pid = win32process.GetWindowThreadProcessId(self.parent_window)
-        win32gui.ShowWindow(pid, win32con.SW_FORCEMINIMIZE)
+        win32gui.ShowWindow(self.parent_window, win32con.SW_HIDE)
         self.parent_pid = pid
 
     # %% Handle GUI waiting for routines that do not stop runtime
