@@ -22,7 +22,7 @@ install_requires = []
 
 setup(
     name='pyras',
-    version=__version__,
+    version=read_version(),
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     keywords=["HEC-RAS HEC RAS controller windows"],
     url='https://github.com/goanpeca/raspy',
