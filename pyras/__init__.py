@@ -55,14 +55,14 @@ if len(_available_versions) > 0:
 #        except Exception:
 #            pass
 
-    from .hecrascontroller import HECRASController
-    from .pyras import PyRAS
+    import controllers.hecras
+#    from . import pyras
 
     # Cleaning the namespace
-    globals().pop('hecrascontroller')
-    globals().pop('hecrasgeometry')
-    globals().pop('pyras')
-    globals().pop('tools')
+#    globals().pop('hecrascontroller')
+#    globals().pop('hecrasgeometry')
+#    globals().pop('pyras')
+#    globals().pop('tools')
 else:
     error = '"HEC River Analysis System" type library not found. ' \
             'Please install HEC-RAS'

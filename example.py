@@ -6,11 +6,10 @@ import pyras
 
 project = r'examples\Steady Examples\BEAVCREK.prj'
 
-rc = pyras.HECRASController('RAS41')
-#rc = pyras.HECRASController('RAS500')
+rc = pyras.controllers.HECRASController('RAS41')
+#rc = pyras.controllers.HECRASController('RAS500')
 
 #rc.ShowRas()
-
 
 # %% Project
 rc.Project_Open(project)
