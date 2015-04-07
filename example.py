@@ -22,13 +22,11 @@ print(res)
 print('')
 
 #rc.Compute_HideComputationWindow()
+#rc.Compute_ShowComputationWindow()
 res = rc.Compute_CurrentPlan()
+print('Compute_CurrentPlan:')
 print(res)
-
-
-
-#for i in range(10000):
-#    print(rc.Compute_Complete())
+print('')
 
 #res = rc.Compute_Cancel()
 #print('\nCompute_Cancel', res)

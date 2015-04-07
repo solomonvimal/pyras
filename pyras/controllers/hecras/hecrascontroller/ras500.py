@@ -44,7 +44,6 @@ class Controller(ras41.Controller):
         nmsg = None
         Msg = None
         res = rc.Compute_CurrentPlan(nmsg, Msg, BlockingModel)
-        print(res)
         success, nmsg, Msg, other = res
         return success
 

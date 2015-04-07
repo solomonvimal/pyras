@@ -85,52 +85,6 @@ class Controller(object):
         res = rc.Compute_WATPlan()
         return res
 
-#    def ComputeProgressBar(self):
-#        """
-#        Repeatedly returns a single value between 0 and 1, indicating the
-#        progress of the computations.
-#
-#        Parameters
-#        ----------
-#        Progress : float
-#            Progress of computations [0, 1]
-#
-#        Notes
-#        -----
-#        Must instantiate the HECRASController "With Events". Then the event
-#        rc.ComputeProgressBar becomes available for code. rc being the variable
-#        name for the instanciated HECRASController. rc_ComputeProgressBar is
-#        called repeatedly once Compute_CurrentPlan is called and thorugh the
-#        duration of the HEC-RAS Computations.
-#        """
-##        Progress = 0.0
-##        rc = self._rc
-#        print('hello')
-#        res = self.events.ComputeProgressBar
-#        return res
-
-#    def ComputeProgressMessage(self):
-#        """
-#        Repeatedly returns computations messages during computations.
-#
-#        Parameters
-#        ----------
-#        Msg : str
-#            Computation message.
-#
-#        Notes
-#        -----
-#        Must instantiate the HECRASController "With Events". Then the method
-#        rc_ComputeProgressBar becomes available for code. rc being the variable
-#        name for the instanciated HECRASController. rc_ComputeProgressMessage
-#        is called repeatedly once Compute_CurrentPlan is called and thorugh the
-#        duration of the HEC-RAS Computations.
-#        """
-#        Msg = ""
-#        rc = self._rc
-#        res = rc.ComputeProgressBar(Msg)
-#        return res
-
     # %% Create
     def Create_WATPlanName(self, HECRASBasePlanName, SimulationName):
         """
@@ -224,7 +178,7 @@ class Controller(object):
         res = rc.CurrentUnSteadyFile()
         return res
 
-    # %% Edit
+    # %% Edit Add
     def Edit_AddBC(self, river, reach, rs):
         """
         Add a bridge/culvert.
@@ -337,6 +291,7 @@ class Controller(object):
         res = rc.Edit_AddXS(river, reach, rs, errmsg)
         river, reach, rs, errmsg = res
 
+    # %% Edit
     def Edit_BC(self, river, reach, rs):
         """
         Opens the Bridge/Culvert Editor and displays the selected river
@@ -946,6 +901,8 @@ class Controller(object):
 
         return res
 
+
+    # %% Versions
     def GetRASVersion(self):
         """
         Returns the version number and date of HEC-RAS.
@@ -985,12 +942,6 @@ class Controller(object):
         """
         rc = self._rc
         rc.Map_Add(Filename)
-
-    @property
-    def mGeometry(self):
-        """ """
-        rc = self._rc
-        return rc.mGeometry
 
     # %% Output
     def Output_ComputationLevel_Export(self):
@@ -1784,9 +1735,46 @@ class ControllerDeprecated(object):
 class RASEvents:
     """Not working"""
     def HECRASController_ComputeProgressBar(self, Progress):
-        """ """
+        """
+        Repeatedly returns a single value between 0 and 1, indicating the
+        progress of the computations.
+
+        Parameters
+        ----------
+        Progress : float
+            Progress of computations [0, 1]
+
+        Notes
+        -----
+        Must instantiate the HECRASController "With Events". Then the event
+        rc.ComputeProgressBar becomes available for code. rc being the variable
+        name for the instanciated HECRASController. rc_ComputeProgressBar is
+        called repeatedly once Compute_CurrentPlan is called and thorugh the
+        duration of the HEC-RAS Computations.
+
+        Python: this events do not work with win32com
+        """
         print(Progress)
+        return Progress
 
     def ComputeProgressMessage(self, msg):
-        """ """
+        """
+        Repeatedly returns computations messages during computations.
+
+        Parameters
+        ----------
+        Msg : str
+            Computation message.
+
+        Notes
+        -----
+        Must instantiate the HECRASController "With Events". Then the method
+        rc_ComputeProgressBar becomes available for code. rc being the variable
+        name for the instanciated HECRASController. rc_ComputeProgressMessage
+        is called repeatedly once Compute_CurrentPlan is called and thorugh the
+        duration of the HEC-RAS Computations.
+
+        Python: this events do not work with win32com
+        """
         print(msg)
+        return msg

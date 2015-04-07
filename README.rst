@@ -19,9 +19,12 @@ PyRAS - Python for River AnalysiS
 Description
 -----------
 
-A Python suite for working with river models. Offers an abstraction layer for 
-the definition of river models and tools to call controller of different
-models.
+A Python suite for working with river models. 
+
+Goals
+-----
+Offer an abstraction layer for the definition of river models and tools to call controller
+of different hydraulic models.
 
 **Models supported (Partial support soon to be completed):**
 
