@@ -23,9 +23,9 @@ class Controller(ras41.Controller):
         Compute_CurrentPlan is set to False.
         """
         rc = self._rc
-        rc.Compute_Complete()
+        return rc.Compute_Complete()
 
-    def Compute_CurrentPlan(self, nmsg, msg, BlockingModel=True):
+    def Compute_CurrentPlan(self, BlockingModel=True):
         """
         Computes the current plan.
 
@@ -33,7 +33,7 @@ class Controller(ras41.Controller):
         ----------
         nmsg : int
             The number of returned messages.
-        msg : str
+        Msg : str
             Messages returned from HECRASController during computations
         BlockingMode: bool, optional
             If BlockingMode is set to False, the code will continue to be read
@@ -41,7 +41,12 @@ class Controller(ras41.Controller):
             default, the HECRASController sets blocking mode to True.
         """
         rc = self._rc
-        rc.Compute_CurrentPlan()
+        nmsg = None
+        Msg = None
+        res = rc.Compute_CurrentPlan(nmsg, Msg, BlockingModel)
+        print(res)
+        success, nmsg, Msg, other = res
+        return success
 
     def Compute_IsStillComputing(self):
         """ """
@@ -62,7 +67,7 @@ class Controller(ras41.Controller):
         this to work.
         """
         rc = self._rc
-        res = rc.Compute_StartedFromController()
+        res = rc.Compute_StartedFromController
         return res
 
     # %% Geometry
@@ -247,3 +252,14 @@ class Controller(ras41.Controller):
 class ControllerDeprecated(object):
     """ """
     pass
+
+
+class RASEvents:
+    """Not working"""
+    def HECRASController_ComputeProgressBar(self, Progress):
+        """ """
+        print(Progress)
+
+    def ComputeProgressMessage(self, msg):
+        """ """
+        print(msg)

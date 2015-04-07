@@ -24,6 +24,9 @@ def HECRASController(ras_version=None):
             super(RASController, self).__init__()
             self._rc = win32com.client.DispatchEx(
                 "{0}.HECRASController".format(ras_version))
+#            self._rc = win32com.client.DispatchWithEvents(
+#                "{0}.HECRASController".format(ras_version), ras.RASEvents)
+            self._events = win32com.client.WithEvents(self._rc, ras.RASEvents)
             self._ras_version = ras_version
             self._error = 'Not available in version "{}" of controller'.format(
                 self._ras_version)

@@ -1,6 +1,5 @@
 Proj Title=Single Bridge - Example 2
-Current Geom=g03
-Current Flow=f01
+Current Plan=p03
 Default Exp/Contr=0.3,0.1
 English Units
 Geom File=g01
@@ -33,4 +32,3 @@ DXF OffsetX= 0
 DXF OffsetY= 0 
 DXF ScaleX= 1 
 DXF ScaleY= 10 
-GIS Export Profiles= 0 

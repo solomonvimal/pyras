@@ -14,7 +14,7 @@ class Controller(object):
         rc = self._rc
         rc.Compute_Cancel()
 
-    def Compute_CurrentPlan(self, nmsg, msg):
+    def Compute_CurrentPlan(self):
         """
         Computes the current plan.
 
@@ -26,7 +26,11 @@ class Controller(object):
             Messages returned from HECRASController during computations
         """
         rc = self._rc
-        rc.Compute_CurrentPlan(nmsg)
+        nmsg = None
+        msg = None
+        res = rc.Compute_CurrentPlan(nmsg, msg)
+        print(res, nmsg, msg)
+        return res
 
     def Compute_HideComputationWindow(self):
         """
@@ -81,50 +85,51 @@ class Controller(object):
         res = rc.Compute_WATPlan()
         return res
 
-    def ComputeProgressBar(self):
-        """
-        Repeatedly returns a single value between 0 and 1, indicating the
-        progress of the computations.
+#    def ComputeProgressBar(self):
+#        """
+#        Repeatedly returns a single value between 0 and 1, indicating the
+#        progress of the computations.
+#
+#        Parameters
+#        ----------
+#        Progress : float
+#            Progress of computations [0, 1]
+#
+#        Notes
+#        -----
+#        Must instantiate the HECRASController "With Events". Then the event
+#        rc.ComputeProgressBar becomes available for code. rc being the variable
+#        name for the instanciated HECRASController. rc_ComputeProgressBar is
+#        called repeatedly once Compute_CurrentPlan is called and thorugh the
+#        duration of the HEC-RAS Computations.
+#        """
+##        Progress = 0.0
+##        rc = self._rc
+#        print('hello')
+#        res = self.events.ComputeProgressBar
+#        return res
 
-        Parameters
-        ----------
-        Progress : float
-            Progress of computations [0, 1]
-
-        Notes
-        -----
-        Must instantiate the HECRASController "With Events". Then the event
-        rc.ComputeProgressBar becomes available for code. rc being the variable
-        name for the instanciated HECRASController. rc_ComputeProgressBar is
-        called repeatedly once Compute_CurrentPlan is called and thorugh the
-        duration of the HEC-RAS Computations.
-        """
-        Progress = 0.0
-        rc = self._rc
-        res = rc.ComputeProgressBar(Progress)
-        return res
-
-    def ComputeProgressMessage(self):
-        """
-        Repeatedly returns computations messages during computations.
-
-        Parameters
-        ----------
-        Msg : str
-            Computation message.
-
-        Notes
-        -----
-        Must instantiate the HECRASController "With Events". Then the method
-        rc_ComputeProgressBar becomes available for code. rc being the variable
-        name for the instanciated HECRASController. rc_ComputeProgressMessage
-        is called repeatedly once Compute_CurrentPlan is called and thorugh the
-        duration of the HEC-RAS Computations.
-        """
-        Msg = ""
-        rc = self._rc
-        res = rc.ComputeProgressBar(Msg)
-        return res
+#    def ComputeProgressMessage(self):
+#        """
+#        Repeatedly returns computations messages during computations.
+#
+#        Parameters
+#        ----------
+#        Msg : str
+#            Computation message.
+#
+#        Notes
+#        -----
+#        Must instantiate the HECRASController "With Events". Then the method
+#        rc_ComputeProgressBar becomes available for code. rc being the variable
+#        name for the instanciated HECRASController. rc_ComputeProgressMessage
+#        is called repeatedly once Compute_CurrentPlan is called and thorugh the
+#        duration of the HEC-RAS Computations.
+#        """
+#        Msg = ""
+#        rc = self._rc
+#        res = rc.ComputeProgressBar(Msg)
+#        return res
 
     # %% Create
     def Create_WATPlanName(self, HECRASBasePlanName, SimulationName):
@@ -1774,3 +1779,14 @@ class Controller(object):
 class ControllerDeprecated(object):
     """ """
     pass
+
+
+class RASEvents:
+    """Not working"""
+    def HECRASController_ComputeProgressBar(self, Progress):
+        """ """
+        print(Progress)
+
+    def ComputeProgressMessage(self, msg):
+        """ """
+        print(msg)
