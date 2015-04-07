@@ -13,8 +13,8 @@
 .. image:: https://pypip.in/license/PyRAS/badge.svg
 
    
-PyRAS - Python River Analysis System
-====================================
+PyRAS - Python for River AnalysiS
+=================================
 
 Description
 -----------
@@ -23,9 +23,12 @@ A Python suite for working with river models. Offers an abstraction layer for
 the definition of river models and tools to call controller of different
 models.
 
-**Models supported:**
+**Models supported (Partial support soon to be completed):**
 
 * **HEC-RAS**: Wrapper for the COM interface of the HEC-RAS controller. (windows only)
+
+
+**Coming soon:**
 
 * **HEC-RAS API**: High level parser API of HEC-RAS input files. (Cross platform)
 
