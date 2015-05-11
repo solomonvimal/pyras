@@ -528,7 +528,7 @@ for item in thelist5:
 # and GITHIB - https://gist.github.com/anonymous/df899701271a62ff4543#file-gistfile1-py
 #Extract data from RAS Geometry files
 #@skulk001
-#Modified by Solomon Vimal
+# Modified by Solomon Vimal
 ########################################################################
 import os
 import re
@@ -547,7 +547,7 @@ for subFolder in listSubFolders:
         for file in listSubFolderFiles:
             #Geometry files in hecras have a ".g0*" extension, the code below filters to look for that geometry files only
             if file.find(".g01") != -1:
-                print file
+                print file #### to check if it prints the right extensions. 
                 openFile = open(subFolderPath + "\\" + file, "r")
                 readFile= openFile.read()
                 #pattern matching to extract specific portion of the file
