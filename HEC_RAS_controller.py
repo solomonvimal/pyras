@@ -599,7 +599,7 @@ for key,value in streamGeometry.items():
 
 #############  GLOB AND TEXT FILE OPERATIONS  ##################
 
-
+# From the email chain from some L/Reuven guy 
 import json
 import glob
 
