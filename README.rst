@@ -68,7 +68,7 @@ The following would be the eventual way of installing (not working right now):
 
 .. code-block:: python
 
-	pip install pyras
+	pip install pyfloods
 4. Needs the following modules
 - win32com.client, inspect, os, numpy, matplotlib and matrix
 
