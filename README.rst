@@ -76,7 +76,7 @@ The following would be the eventual way of installing (not working right now):
 License
 -------
 
-MIT License. Copyright 2015 - Gonzalo Peña-Castellanos
+MIT License. Copyright 2015 - Gonzalo Peña-Castellanos, Solomon Vimal
 
 
 Status
