@@ -2,7 +2,6 @@ Maintainer
 ==========
 
 Solomon Vimal ([@solomonvimal](http://github.com/solomonvimal))
-Gonzalo Peña-Castellanos ([@goanpeca](http://github.com/goanpeca))
 
 Main Authors
 ============
@@ -13,3 +12,4 @@ Code Contributors
 =================
 
 Solomon Vimal ([@solomonvimal](http://github.com/solomonvimal))
+Gonzalo Peña-Castellanos ([@goanpeca](http://github.com/goanpeca))
