@@ -2,6 +2,7 @@ Maintainer
 ==========
 
 Solomon Vimal ([@solomonvimal](http://github.com/solomonvimal))
+Gonzalo Peña-Castellanos ([@goanpeca](http://github.com/goanpeca))
 
 Main Authors
 ============
